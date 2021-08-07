@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Canvas } from 'src/app/Utils/Models/Canvas';
 import * as Mechanics from 'src/app/Utils/Game';
+import { Canvas } from 'src/app/Utils/Models/canvas';
 
 @Component({
   selector: 'dvt-main-game-canvas',
@@ -10,7 +10,10 @@ import * as Mechanics from 'src/app/Utils/Game';
 export class MainGameCanvasComponent implements OnInit {
 
   // Canvas
-  canvas: Canvas = {};
+  canvas: Canvas = {
+    canvas: null,
+    context2D: null
+  };
 
   // Character
   character: Mechanics.Character;
@@ -35,7 +38,7 @@ export class MainGameCanvasComponent implements OnInit {
     globalThis.loadLevel = false;
     globalThis.imagesCount = this.imagesCounted;
 
-    this.character = new Mechanics.Character('Employee', 75, 75, 'character.png');
+    this.character = new Mechanics.Character('Employee', 75, 75, 'character.png', Mechanics.CONSTANTS.character.speed);
 
     this.getCanvasDetails();
     Mechanics.resetCanvas(

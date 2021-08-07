@@ -32,15 +32,16 @@ export class Character {
      * @param name The name of the character
      * @param positionX The position of the character on the x-axis
      * @param positionY The position of the character on the y-axis
-     * @param image THe image associated with the characer
+     * @param image The image associated with the characer
+     * @param speed The speed at which the characted moves
      */
-    constructor(name: string, positionX: number, positionY: number, image: string) {
+    constructor(name: string, positionX: number, positionY: number, image: string, speed: number) {
         this.name = name;
         this.participantId = 'unknown';
         this.positionX = positionX;
         this.positionY = positionY;
         this.image = image;
-        this.speed = 0;
+        this.speed = speed;
         this.angle = 0;
 
         this.currentLevel = 0;
@@ -74,19 +75,19 @@ export class Character {
      */
     changePosition(): void {
         if (this.moveUp) {
-            this.nextY -= CONSTANTS.character.speed;
+            this.nextY -= this.speed;
         }
 
         if (this.moveDown) {
-            this.nextY += CONSTANTS.character.speed;
+            this.nextY += this.speed;
         }
 
         if (this.moveLeft) {
-            this.nextX -= CONSTANTS.character.speed;
+            this.nextX -= this.speed;
         }
 
         if (this.moveRight) {
-            this.nextX += CONSTANTS.character.speed;
+            this.nextX += this.speed;
         }
     }
 

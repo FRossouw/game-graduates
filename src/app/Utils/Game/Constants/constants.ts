@@ -13,7 +13,8 @@ export const CONSTANTS = {
         rows: 24
     },
     character: {
-        speed: 3
+        speed: 3,
+        running: 6
     },
     canvas: {
         color: {

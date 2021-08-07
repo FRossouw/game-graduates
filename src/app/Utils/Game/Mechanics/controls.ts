@@ -1,3 +1,4 @@
+import { CONSTANTS } from '../Constants/constants';
 import { Character } from '../Models/character';
 
 /**
@@ -21,6 +22,7 @@ export function setupInputEvents(character: Character): void {
  * @param character The character that needs to move when a button is pressed
  */
 export function keyPressed(evt: KeyboardEvent, character: Character): void {
+    console.log(evt);
     if ((evt.code === 'KeyW') || (evt.code === 'ArrowUp')) {
         character.moveUp = true;
     }
@@ -32,6 +34,9 @@ export function keyPressed(evt: KeyboardEvent, character: Character): void {
     }
     if ((evt.code === 'KeyA') || (evt.code === 'ArrowLeft')) {
         character.moveLeft = true;
+    }
+    if ((evt.code === 'ShiftLeft') || (evt.code === 'ShiftRight')) {
+        character.speed = CONSTANTS.character.running;
     }
 }
 
@@ -53,5 +58,8 @@ export function keyReleased(evt: KeyboardEvent, character: Character): void {
     }
     if ((evt.code === 'KeyA') || (evt.code === 'ArrowLeft')) {
         character.moveLeft = false;
+    }
+    if ((evt.code === 'ShiftLeft') || (evt.code === 'ShiftRight')) {
+        character.speed = CONSTANTS.character.speed;
     }
 }
