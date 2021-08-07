@@ -8,7 +8,14 @@
  * @param width This is the width of the rectangle.
  * @param height This is the heiht of the rectangle.
  */
-export function drawRectangle(canvasContext: CanvasRenderingContext2D, fillColor: string, positionX: number, positionY: number, width: number, height: number): void {
+export function drawRectangle(
+    canvasContext: CanvasRenderingContext2D,
+    fillColor: string,
+    positionX: number,
+    positionY: number,
+    width: number,
+    height: number
+): void {
     canvasContext.fillStyle = fillColor;
     canvasContext.fillRect(positionX, positionY, width, height);
 }
@@ -21,7 +28,12 @@ export function drawRectangle(canvasContext: CanvasRenderingContext2D, fillColor
  * @param positionY This is the starting point at the most leftest top corner of the y-axis for the text.
  * @param fillColor This is the color the text will be when it is being displayed.
  */
- export function drawText(canvasContext: CanvasRenderingContext2D, text: string, positionX: number, positionY: number, fillColor: string) {
+export function drawText(
+    canvasContext: CanvasRenderingContext2D,
+    text: string, positionX: number,
+    positionY: number,
+    fillColor: string
+): void {
     canvasContext.fillStyle = fillColor;
     canvasContext.fillText(text, positionX, positionY);
 }
@@ -34,7 +46,13 @@ export function drawRectangle(canvasContext: CanvasRenderingContext2D, fillColor
  * @param positionY This is the starting point at the most leftest top corner of the y-axis for the image.
  * @param angle This is the angle the image needs to be rotated
  */
- export function drawImageCenteredWithRotation(canvasContext: CanvasRenderingContext2D, image: CanvasImageSource, positionX: number, positionY: number, angle: number) {
+export function drawImageCenteredWithRotation(
+    canvasContext: CanvasRenderingContext2D,
+    image: CanvasImageSource,
+    positionX: number,
+    positionY: number,
+    angle: number
+): void {
     canvasContext.save();
     canvasContext.translate(positionX, positionY);
     canvasContext.rotate(angle);

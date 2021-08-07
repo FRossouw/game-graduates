@@ -1,6 +1,6 @@
-import { drawImageCenteredWithRotation } from "src/app/Mechanics/draw";
-import { getTileAtCoordinates, rowAndColArrayIndexed } from "src/app/Mechanics/gameCommon";
-import { CONSTANTS } from "../Constants/constants";
+import { drawImageCenteredWithRotation } from 'src/app/Utils/Game/Mechanics/draw';
+import { getTileAtCoordinates, rowAndColArrayIndexed } from 'src/app/Utils/Game/Mechanics/gameCommon';
+import { CONSTANTS } from '../Constants/constants';
 
 export class Character {
     // Basic Information
@@ -34,7 +34,7 @@ export class Character {
      * @param positionY The position of the character on the y-axis
      * @param image THe image associated with the characer
      */
-     constructor(name: string, positionX: number, positionY: number, image: string) {
+    constructor(name: string, positionX: number, positionY: number, image: string) {
         this.name = name;
         this.participantId = 'unknown';
         this.positionX = positionX;
@@ -50,7 +50,7 @@ export class Character {
      * This function moves the character.
      * @param grid This is the world grid for the level.
      */
-     move(grid: number[]) {
+    move(grid: number[]): void {
         this.grid = grid;
         this.nextX = this.positionX;
         this.nextY = this.positionY;
@@ -59,10 +59,10 @@ export class Character {
         this.tileCollision(this.grid);
     }
 
-    /** 
+    /**
      * This functions stops the character from moving
-    */
-    stopMoving() {
+     */
+    stopMoving(): void {
         this.moveUp = false;
         this.moveDown = false;
         this.moveLeft = false;
@@ -72,7 +72,7 @@ export class Character {
     /**
      * This function changes the position of the character
      */
-     changePosition() {
+    changePosition(): void {
         if (this.moveUp) {
             this.nextY -= CONSTANTS.character.speed;
         }
@@ -94,7 +94,7 @@ export class Character {
      * This function checks for collisions between the character and the world.
      * @param grid This is the world grid for the level.
      */
-     tileCollision(grid: number[]) {
+    tileCollision(grid: number[]): void {
         if (!grid) { grid = this.grid; }
 
         const walkIntoTileIndex = getTileAtCoordinates(this.nextX, this.nextY);
@@ -122,7 +122,7 @@ export class Character {
      * @param canvasContext This is the canvas context where the image needs to be drawn. In 2d.
      * @param imgList This is the list of all image references.
      */
-     draw(canvasContext: CanvasRenderingContext2D, imgList: any[]) {
+    draw(canvasContext: CanvasRenderingContext2D, imgList: any[]): void {
         drawImageCenteredWithRotation(canvasContext, imgList[CONSTANTS.images.player], this.positionX, this.positionY, this.angle);
     }
 
@@ -130,7 +130,7 @@ export class Character {
      * This function resets the character on the world grid.
      * @param grid This is the world grid for the level.
      */
-     reset(grid: number[]) {
+    reset(grid: number[]): void {
         for (let eachRow = 0; eachRow < CONSTANTS.game.rows; eachRow++) {
             for (let eachCol = 0; eachCol < CONSTANTS.game.columns; eachCol++) {
 

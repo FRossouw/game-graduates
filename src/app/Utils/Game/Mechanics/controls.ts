@@ -1,10 +1,10 @@
-import { Character } from "../Utils/Models/character";
+import { Character } from '../Models/character';
 
 /**
  * This function sets up the input event listeners for the keyboard
  * @param character The character associated with the input controls
  */
- export function setupInputEvents(character: Character) {
+export function setupInputEvents(character: Character): void {
     document.addEventListener('keydown', (evt) => {
         keyPressed(evt, character);
     });
@@ -20,7 +20,7 @@ import { Character } from "../Utils/Models/character";
  * @param evt The keyboard event that is fired when a button is pressed
  * @param character The character that needs to move when a button is pressed
  */
- export function keyPressed(evt: KeyboardEvent, character: Character) {
+export function keyPressed(evt: KeyboardEvent, character: Character): void {
     if ((evt.code === 'KeyW') || (evt.code === 'ArrowUp')) {
         character.moveUp = true;
     }
@@ -41,7 +41,7 @@ import { Character } from "../Utils/Models/character";
  * @param evt The keyboard event that is fired when a button is released
  * @param character The character that needs to move when a button is released
  */
- export function keyReleased(evt: KeyboardEvent, character: Character) {
+export function keyReleased(evt: KeyboardEvent, character: Character): void {
     if ((evt.code === 'KeyW') || (evt.code === 'ArrowUp')) {
         character.moveUp = false;
     }

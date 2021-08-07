@@ -24,4 +24,4 @@ export const CONSTANTS = {
             loading: 'DVT Mechanics Loading'
         }
     }
-}
+};

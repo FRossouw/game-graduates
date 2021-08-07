@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { setupInputEvents } from 'src/app/Mechanics/controls';
-import { draw, loadImages, resetCanvas } from 'src/app/Mechanics/gameCommon';
-import { CONSTANTS } from 'src/app/Utils/Constants/constants';
 import { Canvas } from 'src/app/Utils/Models/Canvas';
-import { Character } from 'src/app/Utils/Models/character';
-import { LEVELS } from 'src/app/Utils/Models/levels';
+import * as Mechanics from 'src/app/Utils/Game';
 
 @Component({
   selector: 'dvt-main-game-canvas',
@@ -17,7 +13,7 @@ export class MainGameCanvasComponent implements OnInit {
   canvas: Canvas = {};
 
   // Character
-  character: Character;
+  character: Mechanics.Character;
 
   // Images
   imageList = [];
@@ -39,11 +35,17 @@ export class MainGameCanvasComponent implements OnInit {
     globalThis.loadLevel = false;
     globalThis.imagesCount = this.imagesCounted;
 
-    this.character = new Character('Employee', 75, 75, 'character.png');
+    this.character = new Mechanics.Character('Employee', 75, 75, 'character.png');
 
     this.getCanvasDetails();
-    resetCanvas(this.canvas.canvas, this.canvas.context2D, CONSTANTS.canvas.color.reset, CONSTANTS.canvas.text.loading, CONSTANTS.canvas.color.loading);
-    loadImages(this.imageList);
+    Mechanics.resetCanvas(
+      this.canvas.canvas,
+      this.canvas.context2D,
+      Mechanics.CONSTANTS.canvas.color.reset,
+      Mechanics.CONSTANTS.canvas.text.loading,
+      Mechanics.CONSTANTS.canvas.color.loading
+    );
+    Mechanics.loadImages(this.imageList);
     this.startGame();
   }
 
@@ -58,12 +60,12 @@ export class MainGameCanvasComponent implements OnInit {
   /**
    * This function starts the game once all the images are loaded
    */
-   startGame(): void {
+  startGame(): void {
     setInterval(() => {
       // All images are loaded
       if (globalThis.imagesCount === 0) {
-          this.character.move(this.grid);
-          draw(this.canvas.context2D, this.grid, this.imageList, this.character);
+        this.character.move(this.grid);
+        Mechanics.draw(this.canvas.context2D, this.grid, this.imageList, this.character);
       }
 
       if (globalThis.loadLevel) {
@@ -71,30 +73,30 @@ export class MainGameCanvasComponent implements OnInit {
         globalThis.loadLevel = false;
       }
 
-    }, 1000 / CONSTANTS.game.fps); // End of setInterval
+    }, 1000 / Mechanics.CONSTANTS.game.fps); // End of setInterval
     this.loadLevel();
   }
 
-    /**
+  /**
    * This function loads the current level.
    * @param level The current level that needs to be loaded.
    */
-     loadLevel() {
-  
-      setupInputEvents(this.character);
-      this.character.reset(this.grid);
-      this.grid = LEVELS[this.currentLevel];
-      if (this.grid === undefined) {
-        this.grid = [];
-      }
-      this.character.grid = this.grid;
-  
-      if (this.currentLevel < LEVELS.length) {
-        this.currentLevel++;
-      } else {  
-        this.character.stopMoving();
-        globalThis.imagesCount = 1;
-      }  
+  loadLevel(): void {
+
+    Mechanics.setupInputEvents(this.character);
+    this.character.reset(this.grid);
+    this.grid = Mechanics.LEVELS[this.currentLevel];
+    if (this.grid === undefined) {
+      this.grid = [];
     }
+    this.character.grid = this.grid;
+
+    if (this.currentLevel < Mechanics.LEVELS.length) {
+      this.currentLevel++;
+    } else {
+      this.character.stopMoving();
+      globalThis.imagesCount = 1;
+    }
+  }
 
 }

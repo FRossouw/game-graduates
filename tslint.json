@@ -140,13 +140,15 @@
       true,
       "attribute",
       "app",
-      "camelCase"
+      "camelCase",
+      "dvt"
     ],
     "component-selector": [
       true,
       "element",
       "app",
-      "kebab-case"
+      "kebab-case",
+      "dvt"
     ]
   }
 }

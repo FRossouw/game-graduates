@@ -1,7 +1,8 @@
-import { CONSTANTS } from "../Utils/Constants/constants";
-import { GAMEIMAGES } from "../Utils/Constants/images";
-import { Character } from "../Utils/Models/character";
-import { drawRectangle, drawText } from "./draw";
+
+import { Character } from '../Models/character';
+import { CONSTANTS } from '../Constants/constants';
+import { GAMEIMAGES } from '../Constants/images';
+import { drawRectangle, drawText } from './draw';
 
 
 /**
@@ -12,7 +13,13 @@ import { drawRectangle, drawText } from "./draw";
  * @param text The text that needs to be displayed while all images are loading.
  * @param textFill The color of the text that needs to be displayed.
  */
-export function resetCanvas(canvas: HTMLCanvasElement, canvasContext: CanvasRenderingContext2D, canvasFill: string, text: string, textFill: string): void {
+export function resetCanvas(
+    canvas: HTMLCanvasElement,
+    canvasContext: CanvasRenderingContext2D,
+    canvasFill: string,
+    text: string,
+    textFill: string
+): void {
     drawRectangle(canvasContext, canvasFill, 0, 0, canvas.width, canvas.height);
     drawText(canvasContext, text, canvas.width / 2, canvas.height / 2, textFill);
 }
@@ -61,7 +68,7 @@ export function beginImageLoad(tileType: number, fileName: string, imgList: any[
  * @param fileName The filename of the actual image
  * @param imgList The list of images where the image is referenced
  */
- export function loadWorldImages(tileType: number, fileName: string, imgList: any[]): void {
+export function loadWorldImages(tileType: number, fileName: string, imgList: any[]): void {
     imgList[tileType] = document.createElement('img');
     imgList[tileType].onload = countImagesToLoad;
     imgList[tileType].src = 'assets/main/' + fileName;
@@ -73,7 +80,7 @@ export function beginImageLoad(tileType: number, fileName: string, imgList: any[
  * @param xPos The position of the tile on the x-axis
  * @param yPos The position of the tile on the x-axis
  */
- export function getTileAtCoordinates(xPos: number, yPos: number) {
+export function getTileAtCoordinates(xPos: number, yPos: number): number {
     const col = Math.floor(xPos / CONSTANTS.game.width);
     const row = Math.floor(yPos / CONSTANTS.game.height);
     const index = rowAndColArrayIndexed(col, row);
@@ -89,7 +96,7 @@ export function beginImageLoad(tileType: number, fileName: string, imgList: any[
  * @param col The column position on the grid
  * @param row The row position on the grid
  */
- export function rowAndColArrayIndexed(col: number, row: number) {
+export function rowAndColArrayIndexed(col: number, row: number): number {
     return col + CONSTANTS.game.columns * row;
 }
 
@@ -100,7 +107,12 @@ export function beginImageLoad(tileType: number, fileName: string, imgList: any[
  * @param imageList This is the reference to all the images that are loaded.
  * @param character This is the reference to the character that needs to be drawn.
  */
- export function draw(canvasContext: CanvasRenderingContext2D, grid: number[], imageList: CanvasImageSource[], character: Character) {
+export function draw(
+    canvasContext: CanvasRenderingContext2D,
+    grid: number[],
+    imageList: CanvasImageSource[],
+    character: Character
+): void {
     drawWorld(canvasContext, grid, imageList, character);
     character.draw(canvasContext, imageList);
 }
@@ -112,7 +124,12 @@ export function beginImageLoad(tileType: number, fileName: string, imgList: any[
  * @param imgList This is the reference to all the images that are loaded.
  * @param character This is the reference to the character that needs to be drawn.
  */
- export function drawWorld(canvasContext: CanvasRenderingContext2D, grid: number[], imgList: CanvasImageSource[], character: Character) {
+export function drawWorld(
+    canvasContext: CanvasRenderingContext2D,
+    grid: number[],
+    imgList: CanvasImageSource[],
+    character: Character
+): void {
     let arrayIndex = 0;
     let drawTileX = 0;
     let drawTileY = 0;
@@ -149,7 +166,7 @@ export function beginImageLoad(tileType: number, fileName: string, imgList: any[
  * This function checks whether a tile has transparancy or not
  * @param checkTile The tile that needs to be checked
  */
- export function tileHasTransparency(checkTile: number) {
+export function tileHasTransparency(checkTile: number): boolean {
     return (
         false
         // (checkTile === main.tiles.goal) ||
