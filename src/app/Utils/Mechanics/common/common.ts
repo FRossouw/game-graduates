@@ -1,5 +1,5 @@
-import { Canvas } from "./../models/models";
-import * as CONST from '../constants/constants'
+import { Canvas } from './../models/models';
+import * as CONST from '../constants/constants';
 
 // ===================================================================
 // Canvas and Context

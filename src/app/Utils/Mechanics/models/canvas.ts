@@ -6,5 +6,5 @@ export interface Canvas {
     positions?: {
         topX: number,
         topY: number,
-    }
+    };
 }

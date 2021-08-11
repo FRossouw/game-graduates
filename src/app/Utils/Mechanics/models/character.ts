@@ -1,7 +1,7 @@
-import { IMAGECODE } from "../constants/images";
-import { drawImageCenteredWithRotation } from "../draw/draw";
-import { Canvas } from "./canvas";
-import { KeyBindings } from "./keyBindings";
+import { IMAGECODE } from '../constants/images';
+import { drawImageCenteredWithRotation } from '../draw/draw';
+import { Canvas } from './canvas';
+import { KeyBindings } from './keyBindings';
 
 export class Character {
 
@@ -28,7 +28,7 @@ export class Character {
     camera: {
         panX: number,
         panY: number
-    }
+    };
 
     constructor(
         image: string,
@@ -62,20 +62,22 @@ export class Character {
     move(grid: number[]): void {
         this.nextX = this.positionX;
         this.nextY = this.positionY;
-        if (this.movingLeft) { this.nextX += -this.speed; }
-        if (this.movingRight) { this.nextX += this.speed; }
-        if (this.movingUp) { this.nextY += -this.speed; }
-        if (this.movingDown) { this.nextY += this.speed; }
-        // Insert code for tile collisions
-        // if (isImageAtPixelCoord(this.nextX, this.nextY, grid) === false) {
-        //     this.positionX = this.nextX;
-        //     this.positionY = this.nextY;
-        // }
+        this.changePosition();
+        this.tileCollision(grid);
         this.positionX = this.nextX; // remove
         this.positionY = this.nextY; // remove
     }
 
     cameraFollow(): void { }
+
+    changePosition(): void {
+        if (this.movingLeft) { this.nextX += -this.speed; }
+        if (this.movingRight) { this.nextX += this.speed; }
+        if (this.movingUp) { this.nextY += -this.speed; }
+        if (this.movingDown) { this.nextY += this.speed; }
+    }
+
+    tileCollision(grid: number[]): void { }
 
     drawCharacter(canvas: Canvas, imgList: any[]): void {
         drawImageCenteredWithRotation(canvas, imgList[IMAGECODE.player], this.positionX, this.positionY, this.angle);

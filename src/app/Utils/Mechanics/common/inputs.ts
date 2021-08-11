@@ -1,4 +1,4 @@
-import { Character } from "../models/character";
+import { Character } from '../models/character';
 import * as CONST from '../constants/constants';
 
 export function setUpInputs(character: Character): void {

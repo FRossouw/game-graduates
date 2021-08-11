@@ -1,7 +1,7 @@
-import { GAME } from "../constants/gameConstants";
-import { IMAGECODE } from "../constants/images";
-import { Canvas } from "../models/canvas";
-import { Character } from "../models/character";
+import { GAME } from '../constants/gameConstants';
+import { IMAGECODE } from '../constants/images';
+import { Canvas } from '../models/canvas';
+import { Character } from '../models/character';
 
 export function drawRectangle(gameCanvas: Canvas, color: string): void {
     gameCanvas.context2D.fillStyle = color;

@@ -5,4 +5,4 @@ import { Character } from './character';
 export {
     Canvas,
     Character
-}
+};

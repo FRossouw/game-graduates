@@ -39,7 +39,7 @@ export class MainGameCanvasTwoComponent implements OnInit {
   ngOnInit(): void {
     this.character = new GameMechanics.Character(GameMechanics.CONSTANTS.character.speed);
     this.gameCanvas = GameMechanics.getCanvasContext2d('gameCanvas', this.gameCanvas);
-    
+
     GameMechanics.setUpInputEvents(this.character);
     this.renderGame();
   }

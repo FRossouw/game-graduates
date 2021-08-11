@@ -5,10 +5,10 @@ import {
 } from './common';
 import {
     setUpInputs
-} from './inputs'
+} from './inputs';
 
 export {
     getCanvasContext2d,
     loadImages,
     setUpInputs
-}
+};

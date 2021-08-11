@@ -2,9 +2,9 @@
 import {
     drawRectangle,
     drawOnScreenImagesOnly
-} from "./draw";
+} from './draw';
 
 export {
     drawRectangle,
     drawOnScreenImagesOnly
-}
+};

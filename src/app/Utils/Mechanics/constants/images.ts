@@ -4,7 +4,7 @@ export const IMAGECODE = {
     ground: 1,
     wall: 2,
     goal: 3
-}
+};
 
 export const GAMEIMAGES = [
     { tileType: IMAGECODE.player, theFile: 'character.png' }, // 0
