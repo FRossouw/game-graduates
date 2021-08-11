@@ -70,7 +70,7 @@ export class MainGameCanvasThreeComponent implements OnInit {
 
   moveMechanics(): void {
     this.character.move(this.grid); // Tile collision Missing
-    this.character.cameraFollow();
+    this.character.cameraFollow(this.canvas);
   }
 
   drawMechanics(): void {

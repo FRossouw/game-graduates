@@ -1,3 +1,5 @@
+import { CHARACTER } from '../constants/characterConstants';
+import { GAME } from '../constants/gameConstants';
 import { IMAGECODE } from '../constants/images';
 import { drawImageCenteredWithRotation } from '../draw/draw';
 import { Canvas } from './canvas';
@@ -68,7 +70,38 @@ export class Character {
         this.positionY = this.nextY; // remove
     }
 
-    cameraFollow(): void { }
+    cameraFollow(gameCanvas: Canvas): void {
+        const cameraFocusCenterX = this.camera.panX + gameCanvas.canvas.width / 2;
+        const cameraFocusCenterY = this.camera.panY + gameCanvas.canvas.height / 2;
+
+        const playerDistFromCameraFocusX = Math.abs(this.positionX - cameraFocusCenterX);
+        const playerDistFromCameraFocusY = Math.abs(this.positionY - cameraFocusCenterY);
+
+        if (playerDistFromCameraFocusX > CHARACTER.camera.distanceFromCameraPanX) {
+            if (cameraFocusCenterX < this.positionX) {
+                this.camera.panX += this.speed;
+            } else {
+                this.camera.panX -= this.speed;
+            }
+        }
+        if (playerDistFromCameraFocusY > CHARACTER.camera.distanceFromCameraPanY) {
+            if (cameraFocusCenterY < this.positionY) {
+                this.camera.panY += this.speed;
+            } else {
+                this.camera.panY -= this.speed;
+            }
+        }
+
+        // The game will not show out of bounds
+        if (this.camera.panX < 0) { this.camera.panX = 0; }
+        if (this.camera.panY < 0) { this.camera.panY = 0; }
+
+        const maxPanRight = GAME.images.columns * GAME.images.width - gameCanvas.canvas.width;
+        const maxPanTop = GAME.images.rows * GAME.images.height - gameCanvas.canvas.height;
+
+        if (this.camera.panX > maxPanRight) { this.camera.panX = maxPanRight; }
+        if (this.camera.panY > maxPanTop) { this.camera.panY = maxPanTop; }
+    }
 
     changePosition(): void {
         if (this.movingLeft) { this.nextX += -this.speed; }
