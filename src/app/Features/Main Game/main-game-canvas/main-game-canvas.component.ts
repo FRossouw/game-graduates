@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as Mechanics from 'src/app/Utils/Game';
-import { Canvas } from 'src/app/Utils/Models/canvas';
+import { IMAGECODE } from 'src/app/Utils/Mechanics/constants/images';
+import { Player } from 'src/app/Utils/Mechanics/models/player';
+import * as Mechanics from '../../../Utils/Mechanics/index';
 
 @Component({
   selector: 'dvt-main-game-canvas',
@@ -10,96 +11,76 @@ import { Canvas } from 'src/app/Utils/Models/canvas';
 export class MainGameCanvasComponent implements OnInit {
 
   // Canvas
-  canvas: Canvas = {
-    canvas: null,
-    context2D: null
-  };
-
-  // Character
-  character: Mechanics.Character;
+  canvas: Mechanics.Models.Canvas = { htmlID: 'gameCanvas', canvas: null, context2D: null, positions: { topX: 0, topY: 0 } };
 
   // Images
-  imageList = [];
+  imagesList = [];
   imagesCounted = 0;
 
-  // Map and Grid
-  grid: number[] = [];
-  currentLevel = 0;
+  // Character
+  player: Player = {
+    name: 'Francois'
+  } as Player;
+  character: Mechanics.Models.Character;
 
-  /**
-   * The default constructor for the game
-   */
-  constructor() { }
+  // Grid
+  level =
+    [
+      2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+      2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
+    ];
 
-  /**
-   * This function initializes the game
-   */
   ngOnInit(): void {
-    globalThis.loadLevel = false;
-    globalThis.imagesCount = this.imagesCounted;
-
-    this.character = new Mechanics.Character('Employee', 75, 75, 'character.png', Mechanics.CONSTANTS.character.speed);
-
-    this.getCanvasDetails();
-    Mechanics.resetCanvas(
-      this.canvas.canvas,
-      this.canvas.context2D,
-      Mechanics.CONSTANTS.canvas.color.reset,
-      Mechanics.CONSTANTS.canvas.text.loading,
-      Mechanics.CONSTANTS.canvas.color.loading
-    );
-    Mechanics.loadImages(this.imageList);
+    this.globalLoading();
+    this.canvas = Mechanics.Graphics.getCanvasContext2d(this.canvas);
+    this.character = new Mechanics.Models.Character(this.player, Mechanics.CONST.CHARACTER.walking);
+    Mechanics.Graphics.loadImages(this.imagesList);
+    Mechanics.Graphics.setUpInputs(this.character);
     this.startGame();
   }
 
-  /**
-   * This function retrieves the canvas details
-   */
-  getCanvasDetails(): void {
-    this.canvas.canvas = document.getElementById('gameCanvas');
-    this.canvas.context2D = this.canvas.canvas.getContext('2d');
+  globalLoading(): void {
+    globalThis.loadLevel = false;
+    globalThis.imagesCount = this.imagesCounted;
   }
 
-  /**
-   * This function starts the game once all the images are loaded
-   */
   startGame(): void {
     setInterval(() => {
-      // All images are loaded
       if (globalThis.imagesCount === 0) {
-        this.character.move(this.grid);
-        Mechanics.draw(this.canvas.context2D, this.grid, this.imageList, this.character);
+        this.moveMechanics();
+        this.drawMechanics();
       }
 
-      if (globalThis.loadLevel) {
-        this.loadLevel();
-        globalThis.loadLevel = false;
-      }
-
-    }, 1000 / Mechanics.CONSTANTS.game.fps); // End of setInterval
-    this.loadLevel();
+    }, 1000 / Mechanics.CONST.GAME.framesPerSecond);
   }
 
-  /**
-   * This function loads the current level.
-   * @param level The current level that needs to be loaded.
-   */
-  loadLevel(): void {
+  moveMechanics(): void {
+    this.character.move(this.level); // Tile collision Missing
+    this.character.cameraFollowCharacter(this.canvas);
+  }
 
-    Mechanics.setupInputEvents(this.character);
-    this.character.reset(this.grid);
-    this.grid = Mechanics.LEVELS[this.currentLevel];
-    if (this.grid === undefined) {
-      this.grid = [];
-    }
-    this.character.grid = this.grid;
-
-    if (this.currentLevel < Mechanics.LEVELS.length) {
-      this.currentLevel++;
-    } else {
-      this.character.stopMoving();
-      globalThis.imagesCount = 1;
-    }
+  drawMechanics(): void {
+    Mechanics.Draw.drawRectangle(this.canvas, 'red'); // Resets the canvas untranslates
+    this.canvas.context2D.save();
+    this.canvas.context2D.translate(-this.character.camera.panX, -this.character.camera.panY);
+    Mechanics.Draw.drawImages(this.canvas, this.character, this.level, this.imagesList);
+    // Draw images
+    this.character.drawCharacter(this.canvas, this.imagesList, IMAGECODE.player);
+    // Draw character
+    this.canvas.context2D.restore();
   }
 
 }
