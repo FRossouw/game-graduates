@@ -4,4 +4,4 @@ export const INPUTKEYS = {
     keyS: 'KeyS',
     keyW: 'KeyW',
     shiftLeft: 'ShiftLeft'
-}
+};

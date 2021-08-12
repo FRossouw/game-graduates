@@ -5,9 +5,9 @@ import * as Models from '../models/models';
 
 export class Character {
 
-    //=================================================
+    // =================================================
     // Variables for Character Object
-    //=================================================
+    // =================================================
 
     // Basic Information
     player: Models.Player;
@@ -33,9 +33,9 @@ export class Character {
         panY: number
     };
 
-    //=================================================
+    // =================================================
     // Default constructor for a Character Object
-    //=================================================
+    // =================================================
 
     /**
      * The constructor for creating a new character on the grid
@@ -48,9 +48,9 @@ export class Character {
         this.speed = speed;
     }
 
-    //=================================================
+    // =================================================
     // Methods for Character Moevment
-    //=================================================
+    // =================================================
 
     /**
      * Move the character accorgin to keyboard inputs and movement booleans
@@ -126,9 +126,9 @@ export class Character {
         }
     }
 
-    //=================================================
+    // =================================================
     // Methods for Camera Movement
-    //=================================================
+    // =================================================
 
     /**
      * Follows the character object on the canvas.
@@ -167,9 +167,9 @@ export class Character {
         if (this.camera.panY > maxPanTop) { this.camera.panY = maxPanTop; }
     }
 
-    //=================================================
+    // =================================================
     // Methods for Character Keyboard Bindings
-    //=================================================
+    // =================================================
 
     /**
      * Sets up keyboardbindings for the characters movement
@@ -180,12 +180,12 @@ export class Character {
      * @param running Key to press to move the character faster
      */
     setKeyBindings(left: string, up: string, right: string, down: string, running: string): void {
-        this.keyBindings = { moveUp: up, moveDown: down, moveLeft: left, moveRight: right, running: running } as Models.KeyBindings;
+        this.keyBindings = { moveUp: up, moveDown: down, moveLeft: left, moveRight: right, running } as Models.KeyBindings;
     }
 
-    //=================================================
+    // =================================================
     // Methods for Drawing the Character
-    //=================================================
+    // =================================================
 
     /**
      * Draws the characters image on the canvas at the characters position.
@@ -197,9 +197,9 @@ export class Character {
         Draw.drawImageCenteredWithRotation(canvas, imgList[playerImageCode], this.positionX, this.positionY, this.angle);
     }
 
-    //=================================================
+    // =================================================
     // Methods for Resetting Character
-    //=================================================
+    // =================================================
 
     /**
      * Resets the entire character object to default values.
@@ -211,7 +211,7 @@ export class Character {
      * @param moveRight Reset the movement check boolean (right - east)
      * @param moveDown Reset the movement check boolean (down - south)
      * @param cameraPanX Resets the camera Pan X position.
-     * @param cameraPanY Resets the camera Pan Y position.  
+     * @param cameraPanY Resets the camera Pan Y position.
      * @param angle Resets the angle the character image is rotated to.
      * @param positionX Resets the X position of the character.
      * @param positionY Resets the Y position of the character.
@@ -231,7 +231,7 @@ export class Character {
 
     /**
      * Resets the movements of the character.
-     * This is for initialization purposes only. 
+     * This is for initialization purposes only.
      * @param speed Reset the movement speed of the character.
      * @param moveLeft Reset the movement check boolean (left - west)
      * @param moveUp Reset the movement check boolean (up - north)

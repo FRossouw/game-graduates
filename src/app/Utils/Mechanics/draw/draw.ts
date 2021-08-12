@@ -1,9 +1,9 @@
 import * as CONST from '../constants/constants';
 import * as Model from '../models/models';
 
-//=================================================
+// =================================================
 // Drawing of Shapes Methods
-//=================================================
+// =================================================
 
 /**
  * Resets the entire canvas to a color.
@@ -16,9 +16,9 @@ export function drawRectangle(gameCanvas: Model.Canvas, color: string): void {
     gameCanvas.context2D.fillRect(gameCanvas.positions.topX, gameCanvas.positions.topY, gameCanvas.canvas.width, gameCanvas.canvas.height);
 }
 
-//=================================================
+// =================================================
 // Drawing of Images Methods
-//=================================================
+// =================================================
 
 /**
  * Draw an image on a canvas at a certain position.
@@ -77,9 +77,9 @@ export function drawImages(gameCanvas: Model.Canvas, character: Model.Character,
 
 }
 
-//=================================================
+// =================================================
 // Tile Methods
-//=================================================
+// =================================================
 
 /**
  * Checks whether a given tile is transparent or not.
