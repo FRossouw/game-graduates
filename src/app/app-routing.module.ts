@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     // path: '**', component: PageNotFoundComponent
     path: '**',
-    redirectTo: 'main-game',
+    loadChildren: () => import('./Features/Main Game/main-game.module').then(i => i.MainGameModule),
   }
 ];
 
