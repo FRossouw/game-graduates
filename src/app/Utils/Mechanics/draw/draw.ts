@@ -1,25 +1,34 @@
-import { GAME } from '../constants/gameConstants';
-import { IMAGECODE } from '../constants/images';
-import { Canvas } from '../models/canvas';
-import { Character } from '../models/character';
+import * as CONST from '../constants/constants';
+import * as Model from '../models/models';
 
-export function drawRectangle(gameCanvas: Canvas, color: string): void {
+//=================================================
+// Drawing of Shapes Methods
+//=================================================
+
+/**
+ * Resets the entire canvas to a color.
+ * This fills the entire canvas with the set color.
+ * @param gameCanvas The canvas that will be reset.
+ * @param color The color the canvas needs to be.
+ */
+export function drawRectangle(gameCanvas: Model.Canvas, color: string): void {
     gameCanvas.context2D.fillStyle = color;
     gameCanvas.context2D.fillRect(gameCanvas.positions.topX, gameCanvas.positions.topY, gameCanvas.canvas.width, gameCanvas.canvas.height);
 }
 
-function drawRectangleCustom(gameCanvas: Canvas, color: string, posX: number, posY: number, width: number, height: number): void {
-    gameCanvas.context2D.fillStyle = color;
-    gameCanvas.context2D.fillRect(posX, posY, width, height);
-}
+//=================================================
+// Drawing of Images Methods
+//=================================================
 
-export function drawImageCenteredWithRotation(
-    canvas: Canvas,
-    image: CanvasImageSource,
-    positionX: number,
-    positionY: number,
-    angle: number = 0
-): void {
+/**
+ * Draw an image on a canvas at a certain position.
+ * @param canvas The canvas on which the image needs to be drawn.
+ * @param image The image that needs to be drawn on the canvas.
+ * @param positionX The X position where the image will start on the canvas.
+ * @param positionY The Y position where the image will start on the canvas.
+ * @param angle The rotation the image will be drawn on the canvas.
+ */
+export function drawImageCenteredWithRotation(canvas: Model.Canvas, image: CanvasImageSource, positionX: number, positionY: number, angle: number = 0): void {
     canvas.context2D.save();
     canvas.context2D.translate(positionX, positionY);
     canvas.context2D.rotate(angle);
@@ -27,86 +36,60 @@ export function drawImageCenteredWithRotation(
     canvas.context2D.restore();
 }
 
-export function drawOnScreenImagesOnly(
-    gameCanvas: Canvas,
-    character: Character,
-    grid: number[],
-    imgList: CanvasImageSource[],
-): void {
-    // What column of images will be visible on the canvas
-    const colLeft = Math.floor(character.camera.panX / GAME.images.width);
-    const rowTop = Math.floor(character.camera.panY / GAME.images.height);
-    // How many columns will fit on the screen or area?
-    const colsFitOnScreen = Math.floor(gameCanvas.canvas.width / GAME.images.width);
-    const rowsFitOnScreen = Math.floor(gameCanvas.canvas.height / GAME.images.height);
-    // Finding the right and bottom to draw (add two to prevent tiles popping in and off screen)
-    const colRight = colLeft + colsFitOnScreen + 2;
-    const rowBottom = rowTop + rowsFitOnScreen + 2;
-
-    // Draw each image
+/**
+ * Draw images on the canvas.
+ * Draws only images that are on screen.
+ * @param gameCanvas The canvas on which the image needs to be drawn.
+ * @param character The character that will be drawn on the canvas.
+ * @param grid The grid for the level.
+ * @param imgList The list of images from the network.
+ */
+export function drawImages(gameCanvas: Model.Canvas, character: Model.Character, grid: number[], imgList: CanvasImageSource[]): void {
     let arrayIndex = 0;
     let drawTileX = 0;
     let drawTileY = 0;
 
-    for (let eachRow = 0; eachRow < GAME.images.rows; eachRow++) {
-        for (let eachCol = 0; eachCol < GAME.images.columns; eachCol++) {
+    for (let eachRow = 0; eachRow < CONST.GAME.images.rows; eachRow++) {
+        for (let eachCol = 0; eachCol < CONST.GAME.images.columns; eachCol++) {
             const tileType = grid[arrayIndex];
             let tileImage = imgList[tileType];
 
-            if (tileType === IMAGECODE.player) {
-                const posX = (eachCol * GAME.images.width) + (GAME.images.width / 2);
-                const posY = (eachRow * GAME.images.height) + (GAME.images.height / 2);
+            if (tileType === CONST.IMAGECODE.player) {
+                const posX = (eachCol * CONST.GAME.images.width) + (CONST.GAME.images.width / 2);
+                const posY = (eachRow * CONST.GAME.images.height) + (CONST.GAME.images.height / 2);
                 character.positionX = posX;
                 character.positionY = posY;
-                tileImage = imgList[IMAGECODE.ground];
-                grid[arrayIndex] = IMAGECODE.ground;
+                tileImage = imgList[CONST.IMAGECODE.ground];
+                grid[arrayIndex] = CONST.IMAGECODE.ground;
             }
 
             if (tileHasTransparency(tileType)) {
-                gameCanvas.context2D.drawImage(imgList[IMAGECODE.ground], drawTileX, drawTileY);
+                gameCanvas.context2D.drawImage(imgList[CONST.IMAGECODE.ground], drawTileX, drawTileY);
             } // End of if a tile is transparent
 
             gameCanvas.context2D.drawImage(tileImage, drawTileX, drawTileY);
-            drawTileX += GAME.images.width;
+            drawTileX += CONST.GAME.images.width;
             arrayIndex++;
         } // End of for eachCol
         drawTileX = 0;
-        drawTileY += GAME.images.height;
+        drawTileY += CONST.GAME.images.height;
     } // End of for eachRow
 
 }
 
+//=================================================
+// Tile Methods
+//=================================================
 
-function isImageAtTileCoord(tileColumn: number, tileRow: number, grid: number[]): boolean {
-    const brickIndex = imageTileToIndex(tileColumn, tileRow);
-    return (grid[brickIndex] === 1);
-}
-
-function imageTileToIndex(tileColumn: number, tileRow: number): number {
-    return (tileColumn + GAME.images.columns * tileRow);
-}
-
-export function tileHasTransparency(checkTile: number): boolean {
+/**
+ * Checks whether a given tile is transparent or not.
+ * @param checkTile The tile code to check transparency for.
+ * @returns True if a tile is transparent and false if it is not transparent.
+ */
+function tileHasTransparency(checkTile: number): boolean {
     return (
-        (checkTile === IMAGECODE.player) ||
-        (checkTile === IMAGECODE.goal)
-        // (checkTile === main.tiles.player) ||
-        // (checkTile === main.tiles.key) ||
-        // (checkTile === main.tiles.door) ||
-        // (checkTile === main.tiles.r1) ||
-        // (checkTile === main.tiles.r2) ||
-        // (checkTile === main.tiles.r3) ||
-        // (checkTile === main.tiles.r4) ||
-        // (checkTile === main.tiles.r5) ||
-        // (checkTile === main.tiles.r6) ||
-        // (checkTile === main.tiles.r7) ||
-        // (checkTile === main.tiles.cd) ||
-        // (checkTile === main.tiles.cutlery) ||
-        // (checkTile === main.tiles.jogurt) ||
-        // (checkTile === main.tiles.pvc) ||
-        // (checkTile === main.tiles.shampoo) ||
-        // (checkTile === main.tiles.soda) ||
-        // (checkTile === main.tiles.bottle)
+        (checkTile === CONST.IMAGECODE.player) ||
+        (checkTile === CONST.IMAGECODE.goal)
     );
 }
 

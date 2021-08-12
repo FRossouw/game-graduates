@@ -76,7 +76,7 @@ export class MainGameCanvasComponent implements OnInit {
     Mechanics.Draw.drawRectangle(this.canvas, 'red'); // Resets the canvas untranslates
     this.canvas.context2D.save();
     this.canvas.context2D.translate(-this.character.camera.panX, -this.character.camera.panY);
-    Mechanics.Draw.drawOnScreenImagesOnly(this.canvas, this.character, this.level, this.imagesList);
+    Mechanics.Draw.drawImages(this.canvas, this.character, this.level, this.imagesList);
     // Draw images
     this.character.drawCharacter(this.canvas, this.imagesList, IMAGECODE.player);
     // Draw character
