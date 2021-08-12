@@ -8,4 +8,4 @@ export {
     effects,
     reducers,
     selectors
-}
+};
