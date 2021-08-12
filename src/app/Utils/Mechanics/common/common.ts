@@ -45,3 +45,18 @@ function loadWorldImages(tileType: number, fileName: string, imgList: any[]): vo
     imgList[tileType].onload = countImagesToLoad;
     imgList[tileType].src = 'assets/main/' + fileName;
 }
+
+export function getTileAtCoordinates(xPos: number, yPos: number): number {
+    const col = Math.floor(xPos / CONST.GAME.images.width);
+    const row = Math.floor(yPos / CONST.GAME.images.height);
+    const index = rowAndColArrayIndexed(col, row);
+
+    if ((col >= 0) && (col < CONST.GAME.images.columns) &&
+        (row >= 0) && (row < CONST.GAME.images.rows)) {
+        return index;
+    }
+}
+
+function rowAndColArrayIndexed(col: number, row: number): number {
+    return col + CONST.GAME.images.columns * row;
+}

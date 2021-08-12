@@ -87,9 +87,6 @@ function imageTileToIndex(tileColumn: number, tileRow: number): number {
 }
 
 export function tileHasTransparency(checkTile: number): boolean {
-    if (checkTile === IMAGECODE.goal) {
-        console.log(checkTile === IMAGECODE.goal);
-    }
     return (
         (checkTile === IMAGECODE.player) ||
         (checkTile === IMAGECODE.goal)

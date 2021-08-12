@@ -1,3 +1,4 @@
+import { getTileAtCoordinates } from '../common/common';
 import { CHARACTER } from '../constants/characterConstants';
 import { GAME } from '../constants/gameConstants';
 import { IMAGECODE } from '../constants/images';
@@ -66,8 +67,6 @@ export class Character {
         this.nextY = this.positionY;
         this.changePosition();
         this.tileCollision(grid);
-        this.positionX = this.nextX; // remove
-        this.positionY = this.nextY; // remove
     }
 
     cameraFollow(gameCanvas: Canvas): void {
@@ -110,7 +109,30 @@ export class Character {
         if (this.movingDown) { this.nextY += this.speed; }
     }
 
-    tileCollision(grid: number[]): void { }
+    tileCollision(grid: number[]): void {
+        const walkIntoTileIndex = getTileAtCoordinates(this.nextX, this.nextY);
+        let walkIntoTileType = IMAGECODE.wall;
+
+        walkIntoTileType = grid[walkIntoTileIndex];
+
+        switch (walkIntoTileType) {
+            case IMAGECODE.ground:
+                this.positionX = this.nextX;
+                this.positionY = this.nextY;
+                break;
+
+            case IMAGECODE.goal:
+                this.positionX = this.nextX;
+                this.positionY = this.nextY;
+                grid[walkIntoTileIndex] = IMAGECODE.ground; // This removes an item from the game
+                break;
+
+            case IMAGECODE.wall:
+                break;
+            default:
+                break;
+        }
+    }
 
     drawCharacter(canvas: Canvas, imgList: any[]): void {
         drawImageCenteredWithRotation(canvas, imgList[IMAGECODE.player], this.positionX, this.positionY, this.angle);
