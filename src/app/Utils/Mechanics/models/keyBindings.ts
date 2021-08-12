@@ -1,4 +1,3 @@
-
 export interface KeyBindings {
     moveUp: string;
     moveDown: string;

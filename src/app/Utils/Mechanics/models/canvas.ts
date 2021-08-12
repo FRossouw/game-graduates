@@ -1,4 +1,3 @@
-
 export interface Canvas {
     htmlID?: string;
     canvas?: any;

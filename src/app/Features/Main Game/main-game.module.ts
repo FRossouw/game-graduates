@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { MainGameRoutingModule } from './main-game-routing.module';
 import { MainGameContainerComponent } from './main-game-container/main-game-container.component';
-import { MainGameCanvasThreeComponent } from './main-game-canvas-three/main-game-canvas-three.component';
+import { MainGameCanvasComponent } from './main-game-canvas/main-game-canvas.component';
 
 
 @NgModule({
   declarations: [
     MainGameContainerComponent,
-    MainGameCanvasThreeComponent
+    MainGameCanvasComponent
   ],
   imports: [
     CommonModule,

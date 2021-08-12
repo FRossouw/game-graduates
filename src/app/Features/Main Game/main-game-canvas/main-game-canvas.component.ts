@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { IMAGECODE } from 'src/app/Utils/Mechanics/constants/images';
+import { Player } from 'src/app/Utils/Mechanics/models/player';
 import * as Mechanics from '../../../Utils/Mechanics/index';
 
 @Component({
-  selector: 'dvt-main-game-canvas-three',
-  templateUrl: './main-game-canvas-three.component.html',
-  styleUrls: ['./main-game-canvas-three.component.less']
+  selector: 'dvt-main-game-canvas',
+  templateUrl: './main-game-canvas.component.html',
+  styleUrls: ['./main-game-canvas.component.less']
 })
-export class MainGameCanvasThreeComponent implements OnInit {
+export class MainGameCanvasComponent implements OnInit {
 
   // Canvas
-  canvas: Mechanics.Models.Canvas = {
-    htmlID: 'gameCanvas',
-    canvas: null,
-    context2D: null,
-    positions: { topX: 0, topY: 0 }
-  };
+  canvas: Mechanics.Models.Canvas = { htmlID: 'gameCanvas', canvas: null, context2D: null, positions: { topX: 0, topY: 0 } };
 
   // Images
   imagesList = [];
   imagesCounted = 0;
 
   // Character
+  player: Player = {
+    name: 'Francois'
+  } as Player;
   character: Mechanics.Models.Character;
 
-  grid =
+  // Grid
+  level =
     [
       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
       2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
@@ -42,12 +43,10 @@ export class MainGameCanvasThreeComponent implements OnInit {
       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
     ];
 
-  constructor() { }
-
   ngOnInit(): void {
     this.globalLoading();
     this.canvas = Mechanics.Graphics.getCanvasContext2d(this.canvas);
-    this.character = new Mechanics.Models.Character('character.png', 'Francois', Mechanics.CONST.CHARACTER.walking);
+    this.character = new Mechanics.Models.Character(this.player, Mechanics.CONST.CHARACTER.walking);
     Mechanics.Graphics.loadImages(this.imagesList);
     Mechanics.Graphics.setUpInputs(this.character);
     this.startGame();
@@ -69,17 +68,17 @@ export class MainGameCanvasThreeComponent implements OnInit {
   }
 
   moveMechanics(): void {
-    this.character.move(this.grid); // Tile collision Missing
-    this.character.cameraFollow(this.canvas);
+    this.character.move(this.level); // Tile collision Missing
+    this.character.cameraFollowCharacter(this.canvas);
   }
 
   drawMechanics(): void {
     Mechanics.Draw.drawRectangle(this.canvas, 'red'); // Resets the canvas untranslates
     this.canvas.context2D.save();
     this.canvas.context2D.translate(-this.character.camera.panX, -this.character.camera.panY);
-    Mechanics.Draw.drawOnScreenImagesOnly(this.canvas, this.character, this.grid, this.imagesList);
+    Mechanics.Draw.drawOnScreenImagesOnly(this.canvas, this.character, this.level, this.imagesList);
     // Draw images
-    this.character.drawCharacter(this.canvas, this.imagesList);
+    this.character.drawCharacter(this.canvas, this.imagesList, IMAGECODE.player);
     // Draw character
     this.canvas.context2D.restore();
   }
