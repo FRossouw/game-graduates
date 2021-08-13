@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'leaderboards',
-    loadChildren: () => import('./Features/Leaderboards/leaderboards.module').then(i => i.LeaderboardsModule),
+    path: 'contact-us',
+    loadChildren: () => import('./Features/Contact Us/contact-us.module').then(i => i.ContactUsModule),
   },
   {
-    path: 'main-game',
+    path: 'game',
     loadChildren: () => import('./Features/Main Game/main-game.module').then(i => i.MainGameModule),
+  },
+  {
+    path: 'leaderboards',
+    loadChildren: () => import('./Features/Leaderboards/leaderboards.module').then(i => i.LeaderboardsModule),
   },
   {
     path: 'main-menu',
@@ -21,6 +25,10 @@ const routes: Routes = [
   {
     path: 'page-not-found',
     loadChildren: () => import('./Features/Not Found/not-found.module').then(i => i.NotFoundModule),
+  },
+  {
+    path: 'tutorial',
+    loadChildren: () => import('./Features/Tutorial/tutorial.module').then(i => i.TutorialModule),
   },
   {
     path: '',
