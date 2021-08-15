@@ -1,6 +1,6 @@
-import { Character_Const } from "./constantModels";
+import { CharacterConst } from './constantModels';
 
-export const CHARACTER_DEFAULT: Character_Const = {
+export const CHARACTER_DEFAULT: CharacterConst = {
     walking: 3,
     running: 6,
     camera: {
@@ -9,4 +9,4 @@ export const CHARACTER_DEFAULT: Character_Const = {
     }
 };
 
-export const CHARACTER: Character_Const = {...CHARACTER_DEFAULT};
+export const CHARACTER: CharacterConst = {...CHARACTER_DEFAULT};

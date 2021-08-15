@@ -3,13 +3,13 @@
 // Character Interfaces
 // =================================================
 
-export interface Character_Const {
+export interface CharacterConst {
     walking: number;
     running: number;
-    camera: Character_Camera_Const;
+    camera: CharacterCameraConst;
 }
 
-export interface Character_Camera_Const {
+export interface CharacterCameraConst {
     distanceFromCameraPanX: number;
     distanceFromCameraPanY: number;
 }
@@ -18,12 +18,12 @@ export interface Character_Camera_Const {
 // Game Interfaces
 // =================================================
 
-export interface Game_Const {
+export interface GameConst {
     framesPerSecond: number;
-    images: Game_Images_Const
-};
+    images: GameImagesConst;
+}
 
-export interface Game_Images_Const {
+export interface GameImagesConst {
     width: number;
     height: number;
     gap: number;
@@ -35,7 +35,24 @@ export interface Game_Images_Const {
 // Image Interfaces
 // =================================================
 
-export interface Image_Const {
+export interface ImageConst {
     tileType: number;
     theFile: string;
+}
+
+// =================================================
+// Key Input Interfaces
+// =================================================
+
+export interface KeyInputConst {
+    key: string;
+    keyCode?: number;
+}
+
+export interface KeyInputsConst {
+    up: KeyInputConst;
+    down: KeyInputConst;
+    left: KeyInputConst;
+    right: KeyInputConst;
+    run: KeyInputConst;
 }

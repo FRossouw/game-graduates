@@ -226,7 +226,7 @@ export class Character {
         this.resetMoving(speed, moveLeft, moveUp, moveRight, moveDown);
         this.resetCamera(cameraPanX, cameraPanY);
         this.resetPosition(angle, positionX, positionY, nextX, nextY);
-        this.setKeyBindings(CONST.INPUTKEYS.keyA, CONST.INPUTKEYS.keyW, CONST.INPUTKEYS.keyD, CONST.INPUTKEYS.keyS, CONST.INPUTKEYS.shiftLeft);
+        this.setKeyBindings(CONST.INPUTKEYS.left.key, CONST.INPUTKEYS.up.key, CONST.INPUTKEYS.right.key, CONST.INPUTKEYS.down.key, CONST.INPUTKEYS.run.key);
     }
 
     /**

@@ -1,6 +1,6 @@
-import { Game_Const } from "./constantModels";
+import { GameConst } from './constantModels';
 
-export const GAME_DEFAULTS: Game_Const = {
+export const GAME_DEFAULTS: GameConst = {
     framesPerSecond: 30,
     images: {
         width: 60,
@@ -11,4 +11,4 @@ export const GAME_DEFAULTS: Game_Const = {
     }
 };
 
-export const GAME: Game_Const = {...GAME_DEFAULTS};
+export const GAME: GameConst = {...GAME_DEFAULTS};
