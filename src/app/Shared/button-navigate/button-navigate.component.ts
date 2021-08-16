@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class ButtonNavigateComponent {
 
-  @Input() link: string = 'main-menu';
-  @Input() text: string = `Back`;
+  @Input() link = 'main-menu';
+  @Input() text = `Back`;
 
   constructor(private router: Router) { }
-  
+
   navigate(): void {
     this.router.navigateByUrl(`/${this.link}`);
   }

@@ -6,8 +6,8 @@ export const GAME_DEFAULTS: GameConst = {
         width: 60,
         height: 60,
         gap: 1,
-        columns: 20,
-        rows: 15
+        columns: 40,
+        rows: 30
     }
 };
 

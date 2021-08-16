@@ -1,6 +1,8 @@
 
 import {
     getCanvasContext2d,
+    resizeCanvasCustom,
+    resizeCanvasFullScreen,
     loadImages
 } from './common';
 import {
@@ -9,6 +11,8 @@ import {
 
 export {
     getCanvasContext2d,
+    resizeCanvasCustom,
+    resizeCanvasFullScreen,
     loadImages,
     setUpInputs
 };

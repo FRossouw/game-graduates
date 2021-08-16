@@ -6,4 +6,8 @@ export interface Canvas {
         topX: number,
         topY: number,
     };
+    margin?: {
+        width: number,
+        height: number
+    };
 }

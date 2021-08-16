@@ -6,14 +6,37 @@ import * as CONST from '../constants/constants';
 // ===================================================================
 
 /**
- * Retrieve the canvas 2d rendering context from a
+ * Retrieves the canvas 2d rendering context for a canvas on the DOM
  * @param canvas The canvas object reference of which the content needs to be retrieved.
- * @returns The canvas object returned with the canvas context retrieved.
  */
-export function getCanvasContext2d(canvas: Model.Canvas): Model.Canvas {
+export function getCanvasContext2d(canvas: Model.Canvas): void {
     canvas.canvas = document.getElementById(canvas.htmlID);
     canvas.context2D = canvas.canvas.getContext('2d');
-    return canvas;
+}
+
+/**
+ * Resizes the canvas to fit the entire screen
+ * @param canvas The canvas object reference on the DOM.
+ * @param size The new width and height the canvas needs to be.
+ */
+export function resizeCanvasCustom(canvas: Model.Canvas, screen: { width: number, height: number }): void {
+    canvas.canvas = document.getElementById(canvas.htmlID);
+    canvas.canvas.width = screen.width;
+    canvas.canvas.height = screen.height;
+}
+
+/**
+ * Resizes the canvas to fit the entire screen
+ * @param canvas The canvas object reference on the DOM.
+ */
+export function resizeCanvasFullScreen(canvas: Model.Canvas): void {
+    canvas.canvas = document.getElementById(canvas.htmlID);
+    if (canvas?.canvas?.width < window.innerWidth) {
+        canvas.canvas.width = window.innerWidth - canvas.margin.width;
+    }
+    if (canvas?.canvas?.height < window.innerHeight) {
+        canvas.canvas.height = window.innerHeight - canvas.margin.height;
+    }
 }
 
 // ===================================================================
