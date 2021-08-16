@@ -1,3 +1,4 @@
+import { ImageConst } from './constantModels';
 
 export const IMAGECODE = {
     player: 0,
@@ -6,7 +7,7 @@ export const IMAGECODE = {
     goal: 3
 };
 
-export const GAMEIMAGES = [
+export const GAMEIMAGES: ImageConst[] = [
     { tileType: IMAGECODE.player, theFile: 'character.png' }, // 0
     { tileType: IMAGECODE.ground, theFile: 'groundlrg.png' }, // 1
     { tileType: IMAGECODE.wall, theFile: 'walllrg.png' }, // 2

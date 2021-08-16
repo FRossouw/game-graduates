@@ -1,5 +1,6 @@
+import { CharacterConst } from './constantModels';
 
-export const CHARACTER = {
+export const CHARACTER_DEFAULT: CharacterConst = {
     walking: 3,
     running: 6,
     camera: {
@@ -7,3 +8,5 @@ export const CHARACTER = {
         distanceFromCameraPanY: 100
     }
 };
+
+export const CHARACTER: CharacterConst = {...CHARACTER_DEFAULT};
