@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainGameRoutingModule } from './main-game-routing.module';
 import { MainGameContainerComponent } from './main-game-container/main-game-container.component';
 import { MainGameCanvasComponent } from './main-game-canvas/main-game-canvas.component';
+import { SharedModule } from 'src/app/Shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MainGameCanvasComponent } from './main-game-canvas/main-game-canvas.com
   ],
   imports: [
     CommonModule,
-    MainGameRoutingModule
+    MainGameRoutingModule,
+    SharedModule
   ]
 })
 export class MainGameModule { }
