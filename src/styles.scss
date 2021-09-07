@@ -1,2 +1,7 @@
 @import './app/Utils/Styles/styles.scss';
 @import './app/Utils/Theme/theme.index';
+
+* {
+    padding: 0;
+    margin: 0;
+}

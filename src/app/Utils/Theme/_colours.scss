@@ -1,27 +1,85 @@
 // =============================================================================
 // DVT COLOURS
 // =============================================================================
-$blue: #391f4f;
-$yellow: #81f281;
+$dvt-blue: #007fba;
+$dvt-white: #ffffff;
+$dvt-yellow: #ffc72c;
+
 $white: #fff;
+$black: #000;
 
 // =============================================================================
 // STATIC COLOURS
 // =============================================================================
 
-$background: #fff;
+
+// =============================================================================
+// Menu COLOURS
+// =============================================================================
+
+$menu-border-light: $dvt-white;
+$menu-border-dark: $dvt-blue;
+
+$menu-text-light: $dvt-blue;
+$menu-text-dark: $dvt-white;
+$menu-text-color-light: $dvt-white;
+$menu-text-color-dark: $dvt-blue;
+
+$menu-zero-light: #caf0f8ff;
+$menu-zero-dark: #03045eff;
+$menu-one-light: #ade8f4ff;
+$menu-one-dark: #023e8aff;
+$menu-two-light: #90e0efff;
+$menu-two-dark: #0077b6ff;
+$menu-three-light: #48cae4ff;
+$menu-three-dark: #0096c7ff;
+$menu-four-light: #00b4d8ff;
+$menu-four-dark: #00b4d8ff;
+$menu-five-light: #0096c7ff;
+$menu-five-dark: #48cae4ff;
+$menu-six-light: #0077b6ff;
+$menu-six-dark: #90e0efff;
+$menu-seven-light: #023e8aff;
+$menu-seven-dark: #ade8f4ff;
+$menu-eight-light: #03045eff;
+$menu-eight-dark: #caf0f8ff;
+$menu-nine-light: $white;
+$menu-nine-dark: $black;
 
 // =============================================================================
 // BACKGROUND COLOURS
 // =============================================================================
-$background-light: #FFF;
-$background-dark: #000;
+$background-light: $dvt-white;
+$background-dark: $dvt-blue;
 
 
+// =============================================================================
+// USAGE COLOURS
+// =============================================================================
 
 $colors: (
-    --dvt-blue: ($blue, $blue),
-    --dvt-yellow: ($yellow, $yellow),
-    --dvt-white: ($white, $white),
+    // DVT Colours
+    --dvt-blue: ($dvt-blue, $dvt-blue),
+    --dvt-yellow: ($dvt-yellow, $dvt-yellow),
+    --dvt-white: ($dvt-white, $dvt-white),
+    // Statics
+
+    // Menu Blocks
+    --menu-block: ($menu-border-light, $menu-border-dark),
+    --menu-background: ($menu-text-light, $menu-text-dark),
+    --menu-background-hover: ($menu-text-dark, $menu-text-light),
+    --menu-text: ($menu-text-color-light, $menu-text-color-dark),
+    --menu-text-hover: ($menu-text-color-dark, $menu-text-color-light),
+    --menu-zero: ($menu-zero-light, $menu-zero-dark),
+    --menu-one: ($menu-one-light, $menu-one-dark),
+    --menu-two: ($menu-two-light, $menu-two-dark),
+    --menu-three: ($menu-three-light, $menu-three-dark),
+    --menu-four: ($menu-four-light, $menu-four-dark),
+    --menu-five: ($menu-five-light, $menu-five-dark),
+    --menu-six: ($menu-six-light, $menu-six-dark),
+    --menu-seven: ($menu-seven-light, $menu-seven-dark),
+    --menu-eight: ($menu-eight-light, $menu-eight-dark),
+    --menu-nine: ($menu-nine-light, $menu-nine-dark),
+    
     --background-color: ($background-light, $background-dark),
 )

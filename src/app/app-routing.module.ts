@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./Features/Contact Us/contact-us.module').then(i => i.ContactUsModule),
   },
   {
-    path: 'game',
+    path: 'play-game',
     loadChildren: () => import('./Features/Main Game/main-game.module').then(i => i.MainGameModule),
   },
   {
