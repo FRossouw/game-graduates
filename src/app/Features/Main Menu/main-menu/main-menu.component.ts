@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeToggleService } from 'src/app/Utils/Theme/theme-toggle.service';
 
 @Component({
   selector: 'dvt-main-menu',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private themeService: ThemeToggleService) { }
 
   ngOnInit(): void {
+    this.themeService.toggle();
   }
 
 }
