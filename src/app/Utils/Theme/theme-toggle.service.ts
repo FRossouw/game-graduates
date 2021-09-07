@@ -25,7 +25,7 @@ export class ThemeToggleService {
 
   }
 
-  public setThemeOnStart() {
+  public setThemeOnStart(): void {
     if (this.isDarkThemeSelected()) {
       this.setDarkTheme();
     } else {
@@ -36,7 +36,7 @@ export class ThemeToggleService {
     }, 500);
   }
 
-  public toggle() {
+  public toggle(): void {
     if (this.darkThemeSelected) {
       this.setLightTheme();
     } else {
@@ -49,7 +49,7 @@ export class ThemeToggleService {
     return this.darkThemeSelected;
   }
 
-  private setLightTheme() {
+  private setLightTheme(): void {
     this.storage.set(this.THEME_KEY, this.LIGHT_THEME_VALUE);
     document.body.classList.remove(this.DARK_THEME_CLASS_NAME);
     document.body.classList.add(this.LIGHT_THEME_CLASS_NAME);
@@ -57,7 +57,7 @@ export class ThemeToggleService {
     this.theme$.next(ThemeMode.LIGHT);
   }
 
-  private setDarkTheme() {
+  private setDarkTheme(): void {
     this.storage.set(this.THEME_KEY, this.DARK_THEME_VALUE);
     document.body.classList.remove(this.LIGHT_THEME_CLASS_NAME);
     document.body.classList.add(this.DARK_THEME_CLASS_NAME);
