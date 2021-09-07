@@ -4,7 +4,7 @@ import * as Mechanics from '../../../Utils/Mechanics/index';
 @Component({
   selector: 'dvt-main-game-canvas',
   templateUrl: './main-game-canvas.component.html',
-  styleUrls: ['./main-game-canvas.component.less']
+  styleUrls: ['./main-game-canvas.component.scss']
 })
 export class MainGameCanvasComponent implements OnInit {
 
