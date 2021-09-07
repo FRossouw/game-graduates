@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'dvt-button-navigate',
   templateUrl: './button-navigate.component.html',
-  styleUrls: ['./button-navigate.component.less']
+  styleUrls: ['./button-navigate.component.scss']
 })
 export class ButtonNavigateComponent {
 
