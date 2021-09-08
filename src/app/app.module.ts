@@ -10,7 +10,7 @@ import * as MainStore from './Store/index';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

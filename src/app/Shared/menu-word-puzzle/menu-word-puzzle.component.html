@@ -1,0 +1,23 @@
+<div class="menu">
+
+    <ng-container *ngFor="let block of menu">
+        <div *ngIf="!isNumber(block.character)" class="block menu-text">
+            <a [href]="'#'+block.anchor">{{!isNumber(block.character) ? block.character : ''}}</a>
+        </div>
+        <div *ngIf="isNumber(block.character)" class="block"
+        [ngClass]="
+            block.character === 0 ? 'menu-zero' :
+            block.character === 1 ? 'menu-one' :
+            block.character === 2 ? 'menu-two' :
+            block.character === 3 ? 'menu-three' :
+            block.character === 4 ? 'menu-four' :
+            block.character === 5 ? 'menu-five' :
+            block.character === 6 ? 'menu-six' :
+            block.character === 7 ? 'menu-seven' :
+            block.character === 8 ? 'menu-eight' :
+            block.character === 9 ? 'menu-nine' :
+            'menu-text'"
+        ></div>
+    </ng-container>
+
+</div>

@@ -11,6 +11,8 @@
 
     a {
         text-decoration: none;
+        text-align: center;
+        width: 100%;
         color: var(--menu-text);
         &:hover {
             transition: color 0s;
