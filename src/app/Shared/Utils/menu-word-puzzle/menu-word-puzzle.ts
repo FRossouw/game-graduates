@@ -1,6 +1,6 @@
 
-import { Alphanumerical, Randomizer } from "src/app/Utils/Methods";
-import { MENU_MODELS, MENU_CONSTANTS, MENU_CONSTANTS_PUZZLES } from "./index";
+import { Alphanumerical, Randomizer } from 'src/app/Utils/Methods';
+import { MENU_MODELS, MENU_CONSTANTS, MENU_CONSTANTS_PUZZLES } from './index';
 
 export class MenuWordPuzzle {
 
@@ -34,7 +34,7 @@ export class MenuWordPuzzle {
    * Change the language of the menu.
    * @param language A numerical input for language to be selected. Defaults to English (0).
    */
-  changeLanguage(language: Number): void {
+  changeLanguage(language: number): void {
     switch (language) {
       case MENU_CONSTANTS.MENU_LANGUAGES.English:
         this.randomizeMenuSelection(MENU_CONSTANTS_PUZZLES.MENU_ARRAY_ENGLISH, MENU_CONSTANTS.MENU_ARRAY_TEXT_ENGLISH);

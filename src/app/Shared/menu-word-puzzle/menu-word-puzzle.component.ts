@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Mathematical } from 'src/app/Utils/Methods';
-import { MENU_CONSTANTS, MENU_MECHANICS, MENU_MODELS } from '../Utils/menu-word-puzzle';
+import { Mathematical, Randomizer } from 'src/app/Utils/Methods';
+import { MENU_MECHANICS, MENU_MODELS } from '../Utils/menu-word-puzzle';
 
 @Component({
   selector: 'dvt-menu-word-puzzle',
@@ -15,14 +15,13 @@ export class MenuWordPuzzleComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.menuWordPuzzle = new MENU_MECHANICS.MenuWordPuzzle(6, MENU_CONSTANTS.MENU_LANGUAGES.Afrikaans);
+    const randomLang = Randomizer(2);
+    this.menuWordPuzzle = new MENU_MECHANICS.MenuWordPuzzle(6, randomLang);
     this.menu = this.menuWordPuzzle.menu;
   }
 
   isNumber(character: string | number): boolean {
-    const nnb = Mathematical.isCharacterNumber(character);
-    console.log(nnb);
-    return nnb;
+    return Mathematical.isCharacterNumber(character);
   }
 
 }

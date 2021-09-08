@@ -8,4 +8,4 @@ export {
     MENU_CONSTANTS_PUZZLES,
     MENU_MECHANICS,
     MENU_MODELS
-}
+};

@@ -10,11 +10,11 @@ import { ThemeToggleService } from './Utils/Theme/theme-toggle.service';
 export class AppComponent implements OnInit {
   title = 'game-graduates';
 
-  constructor (private themeService: ThemeToggleService) {}
+  constructor(private themeService: ThemeToggleService) {}
 
   ngOnInit(): void {
     this.themeService.setThemeOnStart();
     this.themeService.toggle();
   }
-  
+
 }
