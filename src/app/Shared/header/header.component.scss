@@ -1,0 +1,21 @@
+
+#header {
+    width: 100vw;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: var(--menu-background);
+
+    div {
+        padding: 10px;
+        border: 1px solid red;
+    }
+
+    .header-space {
+        flex-grow: 1;
+    }
+
+    p {
+        width: 100%;
+        height: 100%;
+    }
+}

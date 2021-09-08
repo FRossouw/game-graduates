@@ -13,13 +13,13 @@ export class MainMenuComponent implements OnInit {
 
   menu: Menu[] = [];
 
-  dvt: string = 'DVT';
-  playGame: string = 'PLAY GAME';
-  leaderboards: string = 'LEADERBOARDS';
-  getInTouch: string = 'GET IN TOUCH';
-  tutorial: string = 'TUTORIAL';
-  makeAnImpact: string = 'MAKE AN IMPACT';
-  options: string = 'OPTIONS';
+  dvt = 'DVT';
+  playGame = 'PLAY GAME';
+  leaderboards = 'LEADERBOARDS';
+  getInTouch = 'GET IN TOUCH';
+  tutorial = 'TUTORIAL';
+  makeAnImpact = 'MAKE AN IMPACT';
+  options = 'OPTIONS';
 
   constructor(private themeService: ThemeToggleService) { }
 
@@ -37,7 +37,7 @@ export class MainMenuComponent implements OnInit {
   }
 
   private randomizeMenuSelection(): void {
-    const index = Randomizer(MENU_ENGLISH.length)
+    const index = Randomizer(MENU_ENGLISH.length);
     const selectedMenu = MENU_ENGLISH[index];
     const selectedText = MENU_TEXT[index];
     this.dvt = selectedText.dvt;
@@ -49,7 +49,7 @@ export class MainMenuComponent implements OnInit {
     this.options = selectedText.options;
     selectedMenu.forEach(i => {
       const item: Menu = { character: i };
-      this.menu.push(item)
+      this.menu.push(item);
     });
   }
 
@@ -58,7 +58,7 @@ export class MainMenuComponent implements OnInit {
       switch (char.character) {
         case MENU_BUILDER.dvt:
           if (this.dvt.length > 0) {
-            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.dvt)
+            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.dvt);
             this.menu[index].character = this.dvt[0];
             this.menu[index].anchor = 'dvt';
             this.dvt = this.removeFirstLetter(this.dvt);
@@ -66,7 +66,7 @@ export class MainMenuComponent implements OnInit {
           break;
         case MENU_BUILDER.play_game:
           if (this.playGame.length > 0) {
-            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.play_game)
+            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.play_game);
             this.menu[index].character = this.playGame[0];
             this.menu[index].anchor = 'play-game';
             this.playGame = this.removeFirstLetter(this.playGame);
@@ -74,7 +74,7 @@ export class MainMenuComponent implements OnInit {
           break;
         case MENU_BUILDER.leaderboards:
           if (this.leaderboards.length > 0) {
-            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.leaderboards)
+            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.leaderboards);
             this.menu[index].character = this.leaderboards[0];
             this.menu[index].anchor = 'leaderboards';
             this.leaderboards = this.removeFirstLetter(this.leaderboards);
@@ -82,7 +82,7 @@ export class MainMenuComponent implements OnInit {
           break;
         case MENU_BUILDER.get_in_touch:
           if (this.getInTouch.length > 0) {
-            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.get_in_touch)
+            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.get_in_touch);
             this.menu[index].character = this.getInTouch[0];
             this.menu[index].anchor = 'get-in-touch';
             this.getInTouch = this.removeFirstLetter(this.getInTouch);
@@ -90,7 +90,7 @@ export class MainMenuComponent implements OnInit {
           break;
         case MENU_BUILDER.tutorial:
           if (this.tutorial.length > 0) {
-            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.tutorial)
+            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.tutorial);
             this.menu[index].character = this.tutorial[0];
             this.menu[index].anchor = 'tutorial';
             this.tutorial = this.removeFirstLetter(this.tutorial);
@@ -98,7 +98,7 @@ export class MainMenuComponent implements OnInit {
           break;
         case MENU_BUILDER.make_an_impact:
           if (this.makeAnImpact.length > 0) {
-            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.make_an_impact)
+            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.make_an_impact);
             this.menu[index].character = this.makeAnImpact[0];
             this.menu[index].anchor = 'make-an-impact';
             this.makeAnImpact = this.removeFirstLetter(this.makeAnImpact);
@@ -106,7 +106,7 @@ export class MainMenuComponent implements OnInit {
           break;
         case MENU_BUILDER.options:
           if (this.options.length > 0) {
-            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.options)
+            const index = this.menu.findIndex(x => x.character === MENU_BUILDER.options);
             this.menu[index].character = this.options[0];
             this.menu[index].anchor = 'options';
             this.options = this.removeFirstLetter(this.options);
@@ -136,7 +136,7 @@ export class MainMenuComponent implements OnInit {
       wordArray.shift();
       const newWord = wordArray.reduce((c, value) => c.concat(value));
       return newWord;
-    } else return word;
+    } else { return word; }
   }
 
   isNumber(character: string | number): boolean {
