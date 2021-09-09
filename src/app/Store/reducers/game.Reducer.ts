@@ -5,8 +5,9 @@ import * as Models from '../models';
 export const gameFeatureKey = 'game';
 
 export interface GameState {
-  application: Models.Application,
+  application: Models.Application;
   preferences: Models.Preference;
+  menuSelection: Models.MenuSelection;
 }
 
 const initialState: GameState = {
@@ -15,8 +16,11 @@ const initialState: GameState = {
   },
   preferences: {
     Theme: 'DVT-DARK',
-    Language: 1
+    Language: 0
   },
+  menuSelection: {
+    options: false
+  }
 };
 
 const locationReducer = createReducer(

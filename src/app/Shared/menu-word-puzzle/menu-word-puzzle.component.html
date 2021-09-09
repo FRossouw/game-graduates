@@ -2,7 +2,7 @@
 
     <ng-container *ngFor="let block of menu">
         <div *ngIf="!isNumber(block.character)" class="block menu-text">
-            <a [href]="'#'+block.anchor">{{!isNumber(block.character) ? block.character : ''}}</a>
+            <a (click)="blockClick(block)">{{!isNumber(block.character) ? block.character : ''}}</a>
         </div>
         <div *ngIf="isNumber(block.character)" class="block"
         [ngClass]="

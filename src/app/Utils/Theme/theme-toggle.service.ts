@@ -28,8 +28,6 @@ export class ThemeToggleService {
   private readonly DVT_LIGHT = 'DVT-LIGHT';
   private readonly DVT_DARK = 'DVT-DARK'
 
-  private selectedTheme: string = 'DVT-LIGHT';
-
   /**
    * The default constructor for the Theme Service.
    * @param gameStore The game ngrx store.
@@ -43,7 +41,7 @@ export class ThemeToggleService {
    */
   public initializeTheme(): void {
     this.getPreferences();
-    this.changeTheme(this.selectedTheme);
+    this.changeTheme(this.preferences.Theme);
     setTimeout(() => {
       document.body.classList.add('animate-colors-transition');
     }, 500);

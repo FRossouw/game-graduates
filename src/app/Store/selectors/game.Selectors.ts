@@ -7,3 +7,8 @@ export const getPreference = createSelector(
   gameFeatureState,
   (state) => state.preferences
 );
+
+export const getMenuSelection = createSelector(
+  gameFeatureState,
+  (state) => state.menuSelection
+);
