@@ -1,28 +1,3 @@
-
-.menu-text {
-    background-color: var(--menu-background);
-    color: var(--menu-text);
-
-    &:hover {
-        transition: color 0s;
-        background-color: var(--menu-background-hover);
-        color: var(--menu-text-hover);
-    }
-
-    a {
-        text-decoration: none;
-        text-align: center;
-        width: 100%;
-        color: var(--menu-text);
-        &:hover {
-            transition: color 0s;
-            // background-color: var(--menu-background-hover);
-            color: var(--menu-text-hover);
-        }
-    }
-    
-}
-
 .menu-zero { background-color: var(--menu-zero); }
 .menu-one { background-color: var(--menu-one); }
 .menu-two { background-color: var(--menu-two); }

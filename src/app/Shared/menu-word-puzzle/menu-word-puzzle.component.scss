@@ -5,18 +5,43 @@
     min-width: 750px;
     max-width: 750px;
     font-size: 1rem;
-    border: 15px solid var(--menu-background);
+    border: 10px solid var( --menu-puzzle-border);
+    padding: 10px;
 
     .block {
-        min-width: 21px;
-        max-width: 21px;
-        min-height: 21px;
-        max-height: 21px;
+        min-width: 19px;
+        max-width: 19px;
+        min-height: 19px;
+        max-height: 19px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid var(--menu-block);
+        border: 1px solid var(--menu-puzzle-block-background);
+        padding: 2px;
     }
+
+    .menu-text {
+        background-color: var(--menu-puzzle-block-text-background);
+        color: var(--menu-puzzle-block-text);
+    
+        &:hover {
+            transition: color 0s;
+            background-color: var(--menu-puzzle-block-background-hover);
+            color: var(--menu-puzzle-block-text-hover);
+        }
+    
+        a {
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+            &:hover {
+                transition: color 0s;
+                color: var(--menu-puzzle-block-text-hover);
+            }
+        }
+        
+    }
+
 }
 
 @media only screen and (max-width: 800px) {
@@ -30,10 +55,8 @@
             max-width: 14px;
             min-height: 14px;
             max-height: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid var(--menu-block);
+            border: 1px solid var(--menu-puzzle-block-background);
+            padding: 1px;
         }
     }
 }
@@ -45,14 +68,12 @@
         font-size: 0.5rem;
 
         .block {
-            min-width: 6px;
-            max-width: 6px;
-            min-height: 6px;
-            max-height: 6px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid var(--menu-block);
+            min-width: 8px;
+            max-width: 8px;
+            min-height: 8px;
+            max-height: 8px;
+            border: 1px solid var(--menu-puzzle-block-background);
+            padding: 0;
         }
     }
 }

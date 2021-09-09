@@ -16,15 +16,6 @@ $black: #000;
 // =============================================================================
 // Menu COLOURS
 // =============================================================================
-
-$menu-border-light: $dvt-white;
-$menu-border-dark: $dvt-blue;
-
-$menu-text-light: $dvt-blue;
-$menu-text-dark: $dvt-white;
-$menu-text-color-light: $dvt-white;
-$menu-text-color-dark: $dvt-blue;
-
 $menu-zero-light: #caf0f8ff;
 $menu-zero-dark: #03045eff;
 $menu-one-light: #ade8f4ff;
@@ -49,27 +40,35 @@ $menu-nine-dark: $black;
 // =============================================================================
 // BACKGROUND COLOURS
 // =============================================================================
-$background-light: $dvt-white;
-$background-dark: $dvt-blue;
+
 
 
 // =============================================================================
 // USAGE COLOURS
 // =============================================================================
 
+// Colours are in order (dvt-light, dvt-dark, new)
 $colors: (
-    // DVT Colours
+    // DVT =====================================================================
     --dvt-blue: ($dvt-blue, $dvt-blue),
     --dvt-yellow: ($dvt-yellow, $dvt-yellow),
     --dvt-white: ($dvt-white, $dvt-white),
-    // Statics
+    
+    // Application =============================================================
+    --application-background: ($dvt-blue, $dvt-white),
 
-    // Menu Blocks
-    --menu-block: ($menu-border-light, $menu-border-dark),
-    --menu-background: ($menu-text-light, $menu-text-dark),
-    --menu-background-hover: ($menu-text-dark, $menu-text-light),
-    --menu-text: ($menu-text-color-light, $menu-text-color-dark),
-    --menu-text-hover: ($menu-text-color-dark, $menu-text-color-light),
+    // Header ==================================================================
+    --header-background: ($dvt-white, $dvt-blue),
+
+    // Menu Blocks =============================================================
+    --menu-puzzle-border: ($dvt-white, $dvt-blue),
+    --menu-puzzle-block-background: ($dvt-blue, $dvt-white),
+    --menu-puzzle-block-background-hover: ($dvt-white, $dvt-blue),
+    --menu-puzzle-block-text: ($dvt-white, $dvt-blue),
+    --menu-puzzle-block-text-hover: ($dvt-blue, $dvt-white),
+    --menu-puzzle-block-text-background: ($dvt-blue, $dvt-white),
+    --menu-puzzle-block-text-border: ($dvt-white, $dvt-blue),
+
     --menu-zero: ($menu-zero-light, $menu-zero-dark),
     --menu-one: ($menu-one-light, $menu-one-dark),
     --menu-two: ($menu-two-light, $menu-two-dark),
@@ -80,6 +79,4 @@ $colors: (
     --menu-seven: ($menu-seven-light, $menu-seven-dark),
     --menu-eight: ($menu-eight-light, $menu-eight-dark),
     --menu-nine: ($menu-nine-light, $menu-nine-dark),
-    
-    --background-color: ($background-light, $background-dark),
 )
