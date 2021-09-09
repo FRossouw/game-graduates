@@ -6,7 +6,7 @@ import { MenuSelection, Preference } from 'src/app/Store/models';
 import { GameState } from 'src/app/Store/reducers/game.Reducer';
 import { getMenuSelection, getPreference } from 'src/app/Store/selectors/game.Selectors';
 import { Mathematical } from 'src/app/Utils/Methods';
-import { MENU_MECHANICS, MENU_MODELS } from '../Utils/menu-word-puzzle';
+import { MENU_MECHANICS, MENU_MODELS } from '../../Utils/menu-word-puzzle';
 
 @Component({
   selector: 'dvt-menu-word-puzzle',
@@ -16,7 +16,7 @@ import { MENU_MECHANICS, MENU_MODELS } from '../Utils/menu-word-puzzle';
 export class MenuWordPuzzleComponent implements OnInit {
 
   menu: MENU_MODELS.Menu[] = [];
-  menuWordPuzzle: MENU_MECHANICS.MenuWordPuzzle;
+  menuWordPuzzle: MENU_MECHANICS.MenuWordPuzzleInterface;
   menuSelection: MenuSelection;
   preference: Preference;
 
@@ -31,7 +31,7 @@ export class MenuWordPuzzleComponent implements OnInit {
     });
     this.gameStore.select(getPreference).subscribe(p => {
       this.preference = { ...p };
-      this.menuWordPuzzle = new MENU_MECHANICS.MenuWordPuzzle(6, this.preference.Language);
+      this.menuWordPuzzle = new MENU_MECHANICS.MenuWordPuzzleInterface(6, this.preference.Language);
       this.menu = this.menuWordPuzzle.menu;
     });
   }

@@ -1,7 +1,9 @@
 import { Alphanumerical, Randomizer } from 'src/app/Utils/Methods';
-import { MENU_MODELS, MENU_CONSTANTS, MENU_CONSTANTS_PUZZLES } from './index';
+import * as MENU_CONSTANTS from './menuConstants';
+import * as MENU_CONSTANTS_PUZZLES from './MenuConstantPuzzles';
+import * as MENU_MODELS from './menu';;
 
-export class MenuWordPuzzle {
+export class MenuWordPuzzleInterface {
 
   menu: MENU_MODELS.Menu[] = [];
   menuText = { ...MENU_CONSTANTS.MENU_ARRAY_TEXT_ENGLISH[0] };

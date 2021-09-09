@@ -5,7 +5,7 @@ import { Preference } from 'src/app/Store/models';
 import { GameState } from 'src/app/Store/reducers/game.Reducer';
 import { getPreference } from 'src/app/Store/selectors/game.Selectors';
 import { Themes, ThemeToggleService } from 'src/app/Utils/Theme/theme-toggle.service';
-import { MENU_CONSTANTS } from '../Utils/menu-word-puzzle';
+import { MENU_CONSTANTS } from '../../Utils/menu-word-puzzle';
 
 @Component({
   selector: 'dvt-header',
