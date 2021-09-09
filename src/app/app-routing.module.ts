@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainMenuComponent } from './Features/Main Menu/main-menu/main-menu.component';
 import { PageNotFoundComponent } from './Features/Not Found/page-not-found/page-not-found.component';
+import { RouteOutComponent } from './Features/Route Out/route-out/route-out.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'main-menu',
+    component: MainMenuComponent,
     loadChildren: () => import('./Features/Main Menu/main-menu.module').then(i => i.MainMenuModule),
   },
   {
@@ -25,7 +28,13 @@ const routes: Routes = [
   },
   {
     path: 'page-not-found',
+    component: PageNotFoundComponent,
     loadChildren: () => import('./Features/Not Found/not-found.module').then(i => i.NotFoundModule),
+  },
+  {
+    path: 'route',
+    component: RouteOutComponent,
+    loadChildren: () => import('./Features/Route Out/route-out-routing.module').then(i => i.RouteOutRoutingModule),
   },
   {
     path: 'tutorial',

@@ -3,7 +3,13 @@ import { BehaviorSubject } from 'rxjs';
 import { LocalstorageService } from '../Data Storage/Local/local-storage.service';
 
 export enum ThemeMode {
-  DARK, LIGHT
+  DVTLIGHT, DVTDARK
+  // DARK, LIGHT
+}
+
+export enum Themes {
+  'DVT-LIGHT' = 'DVT-LIGHT',
+  'DVT-DARK' = 'DVT-DARK'
 }
 
 @Injectable({
@@ -11,57 +17,74 @@ export enum ThemeMode {
 })
 export class ThemeToggleService {
 
-  public theme$ = new BehaviorSubject<ThemeMode>(ThemeMode.LIGHT);
+  public theme$ = new BehaviorSubject<ThemeMode>(ThemeMode.DVTLIGHT);
+
   private readonly THEME_KEY = 'THEME';
+  private readonly DVT_LIGHT = 'DVT-LIGHT';
+  private readonly DVT_DARK = 'DVT-DARK'
 
-  private readonly LIGHT_THEME_VALUE = 'LIGHT';
-  private readonly LIGHT_THEME_CLASS_NAME = 'theme-light';
-  private readonly DARK_THEME_VALUE = 'DARK';
-  private readonly DARK_THEME_CLASS_NAME = 'theme-dark';
+  private selectedTheme: string = 'DVT-LIGHT';
 
-  private darkThemeSelected = false;
+  constructor(private storage: LocalstorageService) { }
 
-  constructor(private storage: LocalstorageService) {
-
-  }
-
-  public setThemeOnStart(): void {
-    if (this.isDarkThemeSelected()) {
-      this.setDarkTheme();
-    } else {
-      this.setLightTheme();
-    }
+  /**
+   * Initialize the application theme.
+   * This should be done on the start of the application.
+   */
+  public initializeTheme(): void {
+    this.selectThemeFromStorage();
+    this.changeTheme(this.selectedTheme);
     setTimeout(() => {
       document.body.classList.add('animate-colors-transition');
     }, 500);
   }
 
-  public toggle(): void {
-    if (this.darkThemeSelected) {
-      this.setLightTheme();
-    } else {
-      this.setDarkTheme();
+  /**
+   * Changes the theme of the application to another provided theme.
+   * @param theme The theme to change the application to.
+   */
+  public changeTheme(theme: string): void {
+    this.removeAllThemes();
+    switch (theme) {
+      case 'DVT-LIGHT':
+        this.setTheme(this.THEME_KEY, this.DVT_LIGHT, ThemeMode.DVTLIGHT);
+        break;
+      case 'DVT-DARK':
+        this.setTheme(this.THEME_KEY, this.DVT_DARK, ThemeMode.DVTDARK);
+        break;
+      default:
+        this.setTheme(this.THEME_KEY, this.DVT_DARK, ThemeMode.DVTDARK);
+        break;
     }
   }
 
-  private isDarkThemeSelected(): boolean {
-    this.darkThemeSelected = this.storage.get(this.THEME_KEY) === this.DARK_THEME_VALUE;
-    return this.darkThemeSelected;
+  /**
+   * Retrieves the current theme from local storage.
+   */
+  private selectThemeFromStorage(): void {
+    this.selectedTheme = this.storage.get(this.THEME_KEY);
+    
   }
 
-  private setLightTheme(): void {
-    this.storage.set(this.THEME_KEY, this.LIGHT_THEME_VALUE);
-    document.body.classList.remove(this.DARK_THEME_CLASS_NAME);
-    document.body.classList.add(this.LIGHT_THEME_CLASS_NAME);
-    this.darkThemeSelected = false;
-    this.theme$.next(ThemeMode.LIGHT);
+  /**
+   * Removes all themes from the application.
+   */
+  private removeAllThemes(): void {
+    document.body.classList.remove(this.DVT_LIGHT);
+    document.body.classList.remove(this.DVT_DARK);
   }
 
-  private setDarkTheme(): void {
-    this.storage.set(this.THEME_KEY, this.DARK_THEME_VALUE);
-    document.body.classList.remove(this.LIGHT_THEME_CLASS_NAME);
-    document.body.classList.add(this.DARK_THEME_CLASS_NAME);
-    this.darkThemeSelected = true;
-    this.theme$.next(ThemeMode.DARK);
+  /**
+   * Set the current theme.
+   * @param themeKey The theme key name to be stored in local storage.
+   * @param themeClass The theme class that needs to be assigned to the application.
+   * @param themeMode The theme mode observable enum number for the theme.
+   */
+  private setTheme(themeKey: string, themeClass: string, themeMode: number): void {
+    this.storage.set(themeKey, themeClass);
+    document.body.classList.add(themeClass);
+    this.theme$.next(themeMode);
   }
+
+
 }

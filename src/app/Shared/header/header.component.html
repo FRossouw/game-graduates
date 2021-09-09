@@ -1,5 +1,10 @@
 <div id="header">
     <div class="header-logo">logo</div>
     <div class="header-space"></div>
-    <div class="header-toggle">toggle</div>
+    <div class="header-toggle">
+        <dvt-dropdown-menu [list]="languages" (selectedItem)="changeSelectedLanguge($event)"></dvt-dropdown-menu>
+    </div>
+    <div class="header-toggle">
+        <dvt-dropdown-menu [list]="themes" (selectedItem)="changeSelectedTheme($event)"></dvt-dropdown-menu>
+    </div>
 </div>

@@ -9,9 +9,14 @@ export enum MENU_BUILDER {
     options = 7
 }
 
+export enum MENU_LANGUAGES_STRING {
+    'English' = 'English',
+    'Afrikaans' = 'Afrikaans'
+}
+
 export enum MENU_LANGUAGES {
-    'English' = 0,
-    'Afrikaans' = 1
+    'English',
+    'Afrikaans'
 }
 
 export const MENU_ARRAY_TEXT_AFRIKAANS = [

@@ -1,4 +1,7 @@
 
+import { Store } from '@ngrx/store';
+import { GameState } from 'src/app/Store/reducers/game.Reducer';
+import { getLanguagePreference } from 'src/app/Store/selectors/game.Selectors';
 import { Alphanumerical, Randomizer } from 'src/app/Utils/Methods';
 import { MENU_MODELS, MENU_CONSTANTS, MENU_CONSTANTS_PUZZLES } from './index';
 
@@ -14,9 +17,10 @@ export class MenuWordPuzzle {
    * @param coloursCount The amount of colours that should be generated for empty blocks. Defaults to 10.
    * @param language The preferred language the menu should be in. Defaults to English (0).
    */
-  constructor(coloursCount: number = 10, language: number = MENU_CONSTANTS.MENU_LANGUAGES.English) {
+  constructor(coloursCount: number = 10, language: number = MENU_CONSTANTS.MENU_LANGUAGES.English, ) {
     this.colours = coloursCount <= 10 ? coloursCount : 10;
     this.language = language;
+    console.log('constructor language', language);
     this.getRandomMenu();
   }
 
@@ -30,11 +34,16 @@ export class MenuWordPuzzle {
     this.decipherColours();
   }
 
+  changeMenuLanguage(): void {
+    this.menu = [];
+    this.getRandomMenu();
+  }
+
   /**
    * Change the language of the menu.
    * @param language A numerical input for language to be selected. Defaults to English (0).
    */
-  changeLanguage(language: number): void {
+  private changeLanguage(language: number): void {
     switch (language) {
       case MENU_CONSTANTS.MENU_LANGUAGES.English:
         this.randomizeMenuSelection(MENU_CONSTANTS_PUZZLES.MENU_ARRAY_ENGLISH, MENU_CONSTANTS.MENU_ARRAY_TEXT_ENGLISH);
