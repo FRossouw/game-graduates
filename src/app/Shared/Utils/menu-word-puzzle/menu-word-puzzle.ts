@@ -1,7 +1,3 @@
-
-import { Store } from '@ngrx/store';
-import { GameState } from 'src/app/Store/reducers/game.Reducer';
-import { getLanguagePreference } from 'src/app/Store/selectors/game.Selectors';
 import { Alphanumerical, Randomizer } from 'src/app/Utils/Methods';
 import { MENU_MODELS, MENU_CONSTANTS, MENU_CONSTANTS_PUZZLES } from './index';
 

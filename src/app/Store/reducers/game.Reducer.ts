@@ -1,24 +1,30 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as Actions from '../actions/gameActions';
+import * as Models from '../models';
 
 export const gameFeatureKey = 'game';
 
 export interface GameState {
-  loading: boolean;
-  language: number;
+  application: Models.Application,
+  preferences: Models.Preference;
 }
 
 const initialState: GameState = {
-  loading: false,
-  language: 0,
+  application: {
+    loading: false
+  },
+  preferences: {
+    Theme: 'DVT-DARK',
+    Language: 1
+  },
 };
 
 const locationReducer = createReducer(
   initialState,
-  on(Actions.setLanguagePreference, (state, action) => {
+  on(Actions.setPreference, (state, action) => {
     return {
       ...state,
-      language: action.languageID
+      preferences: action.preference
     };
   }),
 );

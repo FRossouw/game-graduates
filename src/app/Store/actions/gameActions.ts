@@ -1,9 +1,10 @@
 import { createAction, props } from '@ngrx/store';
+import { Preference } from '../models';
 
 // =============================================================================
 // Preferences
 // =============================================================================
 
-export const setLanguagePreference =
-    createAction('[Preference] Set Language Preference',
-        props<{ languageID: number }>());
+export const setPreference =
+    createAction('[Preference] Set Preference',
+        props<{ preference: Preference }>());

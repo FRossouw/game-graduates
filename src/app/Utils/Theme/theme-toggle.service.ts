@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject } from 'rxjs';
-import { LocalstorageService } from '../Data Storage/Local/local-storage.service';
+import { setPreference } from 'src/app/Store/actions/gameActions';
+import { Preference } from 'src/app/Store/models';
+import { GameState } from 'src/app/Store/reducers/game.Reducer';
+import { getPreference } from 'src/app/Store/selectors/game.Selectors';
 
 export enum ThemeMode {
   DVTLIGHT, DVTDARK
@@ -15,24 +19,30 @@ export enum Themes {
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeToggleService {
+export class ThemeToggleService { 
 
   public theme$ = new BehaviorSubject<ThemeMode>(ThemeMode.DVTLIGHT);
 
-  private readonly THEME_KEY = 'THEME';
+  private preferences: Preference;
+
   private readonly DVT_LIGHT = 'DVT-LIGHT';
   private readonly DVT_DARK = 'DVT-DARK'
 
   private selectedTheme: string = 'DVT-LIGHT';
 
-  constructor(private storage: LocalstorageService) { }
+  /**
+   * The default constructor for the Theme Service.
+   * @param gameStore The game ngrx store.
+   * @param storage The local storage service.
+   */
+  constructor(private gameStore: Store<GameState>) { }
 
   /**
    * Initialize the application theme.
    * This should be done on the start of the application.
    */
   public initializeTheme(): void {
-    this.selectThemeFromStorage();
+    this.getPreferences();
     this.changeTheme(this.selectedTheme);
     setTimeout(() => {
       document.body.classList.add('animate-colors-transition');
@@ -47,23 +57,15 @@ export class ThemeToggleService {
     this.removeAllThemes();
     switch (theme) {
       case 'DVT-LIGHT':
-        this.setTheme(this.THEME_KEY, this.DVT_LIGHT, ThemeMode.DVTLIGHT);
+        this.setTheme(this.DVT_LIGHT, ThemeMode.DVTLIGHT);
         break;
       case 'DVT-DARK':
-        this.setTheme(this.THEME_KEY, this.DVT_DARK, ThemeMode.DVTDARK);
+        this.setTheme(this.DVT_DARK, ThemeMode.DVTDARK);
         break;
       default:
-        this.setTheme(this.THEME_KEY, this.DVT_DARK, ThemeMode.DVTDARK);
+        this.setTheme(this.DVT_DARK, ThemeMode.DVTDARK);
         break;
     }
-  }
-
-  /**
-   * Retrieves the current theme from local storage.
-   */
-  private selectThemeFromStorage(): void {
-    this.selectedTheme = this.storage.get(this.THEME_KEY);
-    
   }
 
   /**
@@ -80,10 +82,20 @@ export class ThemeToggleService {
    * @param themeClass The theme class that needs to be assigned to the application.
    * @param themeMode The theme mode observable enum number for the theme.
    */
-  private setTheme(themeKey: string, themeClass: string, themeMode: number): void {
-    this.storage.set(themeKey, themeClass);
+  private setTheme(themeClass: string, themeMode: number): void {
+    this.preferences.Theme = themeClass;
+    this.gameStore.dispatch(setPreference({ preference: this.preferences }));
     document.body.classList.add(themeClass);
     this.theme$.next(themeMode);
+  }
+
+  /**
+   * Retrieves the current preferences from the store
+   */
+  private getPreferences(): void {
+    this.gameStore.select(getPreference).subscribe(p => {
+      this.preferences = { ...p };
+    });
   }
 
 

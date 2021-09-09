@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Preference } from 'src/app/Store/models';
 import { GameState } from 'src/app/Store/reducers/game.Reducer';
-import { getLanguagePreference } from 'src/app/Store/selectors/game.Selectors';
+import { getPreference } from 'src/app/Store/selectors/game.Selectors';
 import { LocalstorageService } from 'src/app/Utils/Data Storage/Local/local-storage.service';
-import { Mathematical, Randomizer } from 'src/app/Utils/Methods';
+import { Mathematical } from 'src/app/Utils/Methods';
 import { MENU_CONSTANTS, MENU_MECHANICS, MENU_MODELS } from '../Utils/menu-word-puzzle';
 
 @Component({
@@ -15,15 +16,18 @@ export class MenuWordPuzzleComponent implements OnInit {
 
   menu: MENU_MODELS.Menu[] = [];
   menuWordPuzzle: MENU_MECHANICS.MenuWordPuzzle;
-  language: number = 3;
+  preference: Preference;
 
   constructor(private storage: LocalstorageService, private gameStore: Store<GameState>) { }
 
   ngOnInit(): void {
     const selectedLanguage = this.storage.get('LANGUAGE') ? this.storage.get('LANGUAGE') : MENU_CONSTANTS.MENU_LANGUAGES.English;
-    this.gameStore.select(getLanguagePreference).subscribe(l => {
-      this.language = l;
-      this.menuWordPuzzle = new MENU_MECHANICS.MenuWordPuzzle(6, this.language);
+    this.gameStore.select(getPreference).subscribe(p => {
+      this.preference = p ? p : {
+        Language: 0
+      } as Preference;
+      console.log(p);
+      this.menuWordPuzzle = new MENU_MECHANICS.MenuWordPuzzle(6, this.preference.Language);
       this.menu = this.menuWordPuzzle.menu;
     });
 

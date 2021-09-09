@@ -3,7 +3,7 @@ import * as Reducers from '../reducers/game.Reducer';
 
 const gameFeatureState = createFeatureSelector<Reducers.GameState>(Reducers.gameFeatureKey);
 
-export const getLanguagePreference = createSelector(
-    gameFeatureState,
-    (state) => state.language
-  );
+export const getPreference = createSelector(
+  gameFeatureState,
+  (state) => state.preferences
+);
