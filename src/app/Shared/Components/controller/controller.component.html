@@ -1,0 +1,103 @@
+
+<div class="controller-container">
+
+    <div class="mm-controller">
+
+        <div class="mm-c-back">
+            <div class="mm-c-layer-1 p-morph-default-m">
+
+                <div class="mm-c-container-l">
+
+                    <div class="mm-circle-buttons-circle">
+                        <div class="mm-button-circle-container">
+                            <div class="mm-button-circle p-morph-default-s" (click)="buttonStateChange('up')">
+                                <p class="poppins up">ᐃ</p>
+                            </div>
+                        </div>
+                        <div class="mm-button-circle-container">
+                            <div class="mm-button-circle p-morph-default-s"  (click)="buttonStateChange('left')">
+                                <p class="poppins left">ᐊ</p>
+                            </div>
+                        </div>
+                        <div class="mm-button-circle-container">
+                            <div class="mm-button-circle p-morph-default-s"  (click)="buttonStateChange('right')">
+                                <p class="poppins right">ᐅ</p>
+                            </div>
+                        </div>
+                        <div class="mm-button-circle-container">
+                            <div class="mm-button-circle p-morph-default-s"  (click)="buttonStateChange('down')">
+                                <p class="poppins down">ᐁ</p>
+                            </div>
+                        </div>
+                        <div class="mm-circle p-morph-default-s"></div>
+                    </div>
+
+                    <div class="mm-circle-buttons-analog">
+                        <div class="mm-other-button-container">
+                            <div class="mm-other-button mm-other-button-press p-morph-default-s" (click)="buttonStateChange('options')">
+                                <p class="poppins">OPTIONS</p>
+                            </div>
+                        </div>
+                        <div class="mm-analog-button-container"><div class="mm-button-analog p-morph-default-s"></div></div>
+                    </div>
+
+                </div>
+
+                <div class="mm-c-container-m p-morph-inset-s">
+                    <ng-content select=".screen-container"></ng-content>
+                </div>
+
+                <div class="mm-c-container-r">
+
+                    <div class="mm-circle-buttons-analog">
+                        <div class="mm-analog-button-container"><div class="mm-button-analog p-morph-default-s"></div></div>
+                        <div class="mm-other-button-container">
+                            <div class="mm-other-button mm-other-button-press p-morph-default-s" (click)="buttonStateChange('start')">
+                                <p class="poppins">START</p>
+                            </div>
+                            <div class="mm-other-button p-morph-default-s" (click)="buttonStateChange('select')">
+                                <p class="poppins">SELECT</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mm-circle-buttons-circle">
+                        <div class="mm-button-circle-container">
+                            <div class="mm-button-circle p-morph-default-s" (click)="buttonStateChange('triangle')">
+                                <p class="poppins triangle">△</p>
+                            </div>
+                        </div>
+                        <div class="mm-button-circle-container">
+                            <div class="mm-button-circle p-morph-default-s" (click)="buttonStateChange('square')">
+                                <p class="poppins square">□</p>
+                            </div>
+                        </div>
+                        <div class="mm-button-circle-container">
+                            <div class="mm-button-circle p-morph-default-s" (click)="buttonStateChange('circle')">
+                                <p class="poppins circle">○</p>
+                            </div>
+                        </div>
+                        <div class="mm-button-circle-container">
+                            <div class="mm-button-circle p-morph-default-s" (click)="buttonStateChange('xmark')">
+                                <p class="poppins xmark">×</p>
+                            </div>
+                        </div>
+                        <div class="mm-circle p-morph-default-s"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="screen-to-small poppins">
+        <div class="screen-to-small-container">
+            <p>Screen Size too Small</p>
+            <p>Please use a screen with a minimum resolution of 1260px</p>
+        </div>
+    </div>
+
+</div>
+

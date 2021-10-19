@@ -1,0 +1,36 @@
+
+.p-morph-default {
+    border-radius: 60px;
+    background-color: var(--p-morph);
+    box-shadow: 24px 24px 48px var(--p-morph-shadow-dark), -24px -24px 48px var(--p-morph-shadow-light);
+}
+
+.p-morph-inset {
+    border-radius: 60px;
+    background-color: var(--p-morph);
+    box-shadow: inset 24px 24px 48px var(--p-morph-shadow-dark), inset -24px -24px 48px var(--p-morph-shadow-light);
+}
+
+.p-morph-default-s {
+    border-radius: 60px;
+    background-color: var(--p-morph);
+    box-shadow: 12px 12px 24px var(--p-morph-shadow-dark), -12px -12px 24px var(--p-morph-shadow-light);
+}
+
+.p-morph-inset-s {
+    border-radius: 60px;
+    background-color: var(--p-morph);
+    box-shadow: inset 12px 12px 24px var(--p-morph-shadow-dark), inset -12px -12px 24px var(--p-morph-shadow-light);
+}
+
+.p-morph-default-m {
+    border-radius: 60px;
+    background-color: var(--p-morph);
+    box-shadow: 24px 24px 48px var(--p-morph-shadow-dark), -24px -24px 48px var(--p-morph-shadow-light);
+}
+
+.p-morph-inset-m {
+    border-radius: 60px;
+    background-color: var(--p-morph);
+    box-shadow: inset 24px 24px 48px var(--p-morph-shadow-dark), inset -24px -24px 48px var(--p-morph-shadow-light);
+}

@@ -1,0 +1,243 @@
+@import '../../../Utils/Styles/styles.scss';
+
+
+
+.controller-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #eee;
+    user-select: none;
+
+    .screen-to-small {
+        width: 100vw;
+        height: 100vh;
+        background-color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        display: none;
+        .screen-to-small-container {
+            p {
+                font-size: 24px;
+                text-align: center;
+                font-weight: 300;
+                &:nth-of-type(1) {
+                    font-size: 26px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .mm-controller {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .mm-c-back {
+            
+            .mm-c-layer-1 {
+                max-width: 1200px;
+                min-height: 600px;
+                display: flex;
+                flex-wrap: nowrap;
+
+                .mm-c-container-l, .mm-c-container-r {
+                    width: 300px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    
+                    div {
+                        height: 300px;
+                    }
+
+                    .mm-circle-buttons-analog {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
+                        div {
+                            width: 100%;
+                        }
+                        .mm-analog-button-container {
+                            height: 200px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            align-items: center;
+                            .mm-button-analog {
+                                width: 70px;
+                                height: 70px;
+                                border-radius: 50%;
+                                &:hover {
+                                    cursor: not-allowed;
+                                }
+                            } 
+                        }
+                        .mm-other-button-container {
+                            height: 100px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            &:nth-of-type(1) {
+                                justify-content: flex-end;
+                            }
+                            &:nth-of-type(2) {
+                                justify-content: flex-start;
+                            }
+                            .mm-other-button {
+                                height: 35px;
+                                width: 80px;
+                                margin: 10px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                &:hover {
+                                    cursor: not-allowed;
+                                }
+                                p {
+                                    font-size: 14px;
+                                    text-align: center;
+                                    color: #a9a9a9;
+                                }
+                            }
+                            .mm-other-button-press {
+                                &:active {
+                                    box-shadow: inset 12px 12px 24px var(--p-morph-shadow-dark), inset -12px -12px 24px var(--p-morph-shadow-light);
+                                }
+                                &:hover {
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                    .mm-circle-buttons-circle {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
+                        .mm-circle {
+                            position: relative;
+                            top: -240px;
+                            width: 180px;
+                            height: 180px;
+                            border-radius: 50%;
+                            z-index: 1;
+                        }
+                        .mm-button-circle-container {
+                            z-index: 2;
+                            height: 100px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;  
+                            &:nth-of-type(1) {
+                                align-items: flex-end;
+                                width: 100%;
+                            }
+                            &:nth-of-type(4) {
+                                width: 100%;
+                                align-items: flex-start;
+                            }
+                            &:nth-of-type(2) {
+                                align-items: center;
+                                width: 49%;
+                            }
+                            &:nth-of-type(3) {
+                                align-items: center;
+                                width: 49%;
+                            }
+                            .mm-button-circle {
+                                width: 70px;
+                                height: 70px;
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                &:hover {
+                                    cursor: pointer;
+                                }
+                                &:active {
+                                    box-shadow: inset 12px 12px 24px var(--p-morph-shadow-dark), inset -12px -12px 24px var(--p-morph-shadow-light);
+                                }
+                                p {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 35px;
+                                    height: 35px;
+                                    font-size: 50px;
+                                    text-align: center;
+                                    color: #a9a9a9;
+                                    font-weight: 200;
+                                }
+                                .up {
+                                    position: relative;
+                                    top: -5px;
+                                }
+                                .left {
+                                    position: relative;
+                                    left: -5px;
+                                }
+                                .right {
+                                    position: relative;
+                                    right: -5px;
+                                }
+                                .down {
+                                    position: relative;
+                                    bottom: -5px;
+                                }
+                                .triangle {
+                                    position: relative;
+                                    top: -5px;
+                                }
+                                .square {
+                                    position: relative;
+                                    top: -5px;
+                                    font-size: 60px;
+                                }
+                                .circle {
+                                    position: relative;
+                                    top: -5px;
+                                    font-size: 70px;
+                                }
+                                .xmark {
+                                    position: relative;
+                                    top: 5px;
+                                    font-size: 70px;
+                                }
+                            }
+                        }    
+                    }
+
+                }
+
+                .mm-c-container-m {
+                    border-radius: 10px;
+                    margin: 10px;
+                    width: 600px;
+                }
+
+            }
+
+        }
+        
+
+    }
+
+}
+
+@media only screen and (max-width: 1270px) {
+    .controller-container {
+        .screen-to-small {
+            display: flex;
+        }
+        .mm-controller {
+            display: none;
+        }
+    }
+}

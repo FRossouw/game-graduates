@@ -41,7 +41,7 @@ export class ThemeToggleService {
    */
   public initializeTheme(): void {
     this.getPreferences();
-    this.changeTheme(this.preferences.Theme);
+    this.changeTheme(this.preferences.theme);
     setTimeout(() => {
       document.body.classList.add('animate-colors-transition');
     }, 500);
@@ -81,7 +81,7 @@ export class ThemeToggleService {
    * @param themeMode The theme mode observable enum number for the theme.
    */
   private setTheme(themeClass: string, themeMode: number): void {
-    this.preferences.Theme = themeClass;
+    this.preferences.theme = themeClass;
     this.gameStore.dispatch(setPreference({ preference: this.preferences }));
     document.body.classList.add(themeClass);
     this.theme$.next(themeMode);

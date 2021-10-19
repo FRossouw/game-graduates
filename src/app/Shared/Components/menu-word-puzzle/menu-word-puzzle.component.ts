@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+// State Management
 import { Store } from '@ngrx/store';
 import { setMenuSelection } from 'src/app/Store/actions/gameActions';
-import { MenuSelection, Preference } from 'src/app/Store/models';
 import { GameState } from 'src/app/Store/reducers/game.Reducer';
 import { getMenuSelection, getPreference } from 'src/app/Store/selectors/game.Selectors';
+import { MenuSelection, Preference } from 'src/app/Store/models';
+// Methods and Configs
 import { Mathematical } from 'src/app/Utils/Methods';
-import { MENU_MECHANICS, MENU_MODELS } from '../../Utils/menu-word-puzzle';
+import { MENU_MECHANICS, MENU_MODELS } from './config/index';
 
 @Component({
   selector: 'dvt-menu-word-puzzle',
@@ -31,7 +33,7 @@ export class MenuWordPuzzleComponent implements OnInit {
     });
     this.gameStore.select(getPreference).subscribe(p => {
       this.preference = { ...p };
-      this.menuWordPuzzle = new MENU_MECHANICS.MenuWordPuzzleInterface(6, this.preference.Language);
+      this.menuWordPuzzle = new MENU_MECHANICS.MenuWordPuzzleInterface(6, this.preference.language);
       this.menu = this.menuWordPuzzle.menu;
     });
   }

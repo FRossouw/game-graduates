@@ -9,6 +9,22 @@ $white: #fff;
 $black: #000;
 
 // =============================================================================
+// Neumorphism COLOURS
+// =============================================================================
+$p-morph-light: #dee2e6;
+$p-morph-light-shadow-light: #ffffff;
+$p-morph-light-shadow-dark: #bdc0c4;
+$p-morph-dark: #dee2e6;
+$p-morph-dark-shadow-light: #ffffff;
+$p-morph-dark-shadow-dark: #bdc0c4;
+
+
+$color-pn-4: #181B2C;
+$color-pn-3: #525461;
+$color-pn-2: #8C8D96;
+$color-pn-1: #FFFFFF;
+
+// =============================================================================
 // STATIC COLOURS
 // =============================================================================
 
@@ -59,6 +75,14 @@ $colors: (
 
     // Header ==================================================================
     --header-background: ($dvt-white, $dvt-blue),
+
+    // Neumorphism ==================================================================
+    --p-morph: ($p-morph-light, $p-morph-dark),
+    --p-morph-shadow-light: ($p-morph-light-shadow-light, $p-morph-dark-shadow-light),
+    --p-morph-shadow-dark: ($p-morph-light-shadow-dark, $p-morph-dark-shadow-dark),
+
+
+    // Unused below
 
     // Menu Blocks =============================================================
     --menu-puzzle-border: ($dvt-white, $dvt-blue),
