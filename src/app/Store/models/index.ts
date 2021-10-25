@@ -7,4 +7,4 @@ export {
     Controller,
     MenuSelection,
     Preference
-}
+};

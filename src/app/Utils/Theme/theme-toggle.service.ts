@@ -19,14 +19,14 @@ export enum Themes {
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeToggleService { 
+export class ThemeToggleService {
 
   public theme$ = new BehaviorSubject<ThemeMode>(ThemeMode.DVTLIGHT);
 
   private preferences: Preference;
 
   private readonly DVT_LIGHT = 'DVT-LIGHT';
-  private readonly DVT_DARK = 'DVT-DARK'
+  private readonly DVT_DARK = 'DVT-DARK';
 
   /**
    * The default constructor for the Theme Service.

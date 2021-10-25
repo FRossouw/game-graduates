@@ -45,7 +45,7 @@ export class MenuWordPuzzleComponent implements OnInit {
   blockClick(block: MENU_MODELS.Menu): void {
     switch (block.anchor) {
       case 'dvt':
-        window.open("https://www.dvt.co.za/", "_blank");
+        window.open('https://www.dvt.co.za/', '_blank');
         break;
       case 'play-game':
         this.router.navigate([block.anchor]);
@@ -60,7 +60,7 @@ export class MenuWordPuzzleComponent implements OnInit {
         this.router.navigate([block.anchor]);
         break;
       case 'make-an-impact':
-        window.open("https://www.dvt.co.za/our-values", "_blank");
+        window.open('https://www.dvt.co.za/our-values', '_blank');
         break;
       case 'play-game':
         this.router.navigate([block.anchor]);

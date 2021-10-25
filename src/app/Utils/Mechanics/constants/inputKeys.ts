@@ -11,7 +11,7 @@ const KeyControlRight: KeyInputConst = { key: 'ControlRight', keyCode: 17 };
 const KeyAltLeft: KeyInputConst = { key: 'AltLeft', keyCode: 18 };
 const KeyAltRight: KeyInputConst = { key: 'AltRight', keyCode: 18 };
 const KeySpace: KeyInputConst = { key: 'Space', keyCode: 32 };
-const KeyArrowUp: KeyInputConst = { key: 'ArrowUp', keyCode:38 };
+const KeyArrowUp: KeyInputConst = { key: 'ArrowUp', keyCode: 38 };
 const KeyArrowDown: KeyInputConst = { key: 'ArrowDown', keyCode: 40 };
 const KeyA: KeyInputConst = { key: 'KeyA', keyCode: 65 };
 const KeyB: KeyInputConst = { key: 'KeyB', keyCode: 66 };
@@ -45,7 +45,7 @@ export const KEYBOARDCODES = {
     KeyEnterNumpad,
     KeyArrowUp,
     KeyArrowDown
-}
+};
 
 
 export const INPUTKEYS_DEFAULT: KeyInputsConst = {
