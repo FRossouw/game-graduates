@@ -12,3 +12,8 @@ export const getMenuSelection = createSelector(
   gameFeatureState,
   (state) => state.menuSelection
 );
+
+export const getControllerButton = createSelector(
+  gameFeatureState,
+  (state) => state.controller
+);

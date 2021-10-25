@@ -23,6 +23,13 @@
     box-shadow: inset 12px 12px 24px var(--p-morph-shadow-dark), inset -12px -12px 24px var(--p-morph-shadow-light);
 }
 
+.p-morph-inset-s-transparent {
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: transparent;
+    box-shadow: inset 12px 12px 24px var(--p-morph-shadow-dark), inset -12px -12px 24px var(--p-morph-shadow-light);
+}
+
 .p-morph-default-m {
     border-radius: 60px;
     background-color: var(--p-morph);

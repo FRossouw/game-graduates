@@ -40,8 +40,8 @@
         .mm-c-back {
             
             .mm-c-layer-1 {
-                max-width: 1200px;
-                min-height: 600px;
+                width: 1200px;
+                height: 600px;
                 display: flex;
                 flex-wrap: nowrap;
 
@@ -217,6 +217,7 @@
                 }
 
                 .mm-c-container-m {
+                    border: 2px solid #a9a9a9;
                     border-radius: 10px;
                     margin: 10px;
                     width: 600px;

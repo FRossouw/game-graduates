@@ -1,4 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { setControllerButton } from 'src/app/Store/actions/gameActions';
+import { GameState } from 'src/app/Store/reducers/game.Reducer';
+import { getControllerButton } from 'src/app/Store/selectors/game.Selectors';
 import * as Mechanics from '../../../Utils/Mechanics/index';
 
 @Component({
@@ -28,6 +32,7 @@ export class MainGameCanvasComponent implements OnInit {
       2, 2, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
       2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+      2, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
@@ -50,20 +55,22 @@ export class MainGameCanvasComponent implements OnInit {
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
-      2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 2,
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 2,
       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
     ];
 
+  constructor(private gameStore: Store<GameState>) {}
+
   ngOnInit(): void {
     this.globalLoading();
     Mechanics.Graphics.getCanvasContext2d(this.canvas);
-    Mechanics.Graphics.resizeCanvasFullScreen(this.canvas);
+    // Mechanics.Graphics.resizeCanvasFullScreen(this.canvas);
     this.character = new Mechanics.Models.Character(this.player, Mechanics.CONST.CHARACTER.walking);
     Mechanics.Graphics.loadImages(this.imagesList);
     Mechanics.Graphics.setUpInputs(this.character);
     this.startGame();
+    this.moveWithController();
   }
 
   globalLoading(): void {
@@ -93,6 +100,14 @@ export class MainGameCanvasComponent implements OnInit {
     Mechanics.Draw.drawImages(this.canvas, this.character, this.level, this.imagesList);
     this.character.drawCharacter(this.canvas, this.imagesList, Mechanics.CONST.IMAGECODE.player);
     this.canvas.context2D.restore();
+  }
+
+  moveWithController(): void {
+    this.gameStore.select(getControllerButton).subscribe(c => {
+      this.character.movingUp = c.buttonUp;
+      console.log(this.character);
+    });
+    this.character.movingUp = false;
   }
 
   @HostListener('window:resize', ['$event'])

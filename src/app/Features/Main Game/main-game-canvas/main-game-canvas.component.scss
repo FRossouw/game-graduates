@@ -1,13 +1,1 @@
-#main-game-canvas {
-    height: 90vh;
-
-    .canvas-container {
-        border: 1px solid greenyellow;
-
-        #gameCanvas {
-            border: 1px solid black;
-        }
-
-    }
-
-}
+@import '../../../Utils/Styles/styles.scss';
