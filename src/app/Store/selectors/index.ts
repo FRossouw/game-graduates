@@ -1,4 +1,4 @@
-import * as GameSelectors from './gameSelectors';
+import * as GameSelectors from './game.Selectors';
 
 export {
     GameSelectors

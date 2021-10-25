@@ -1,0 +1,106 @@
+// =============================================================================
+// DVT COLOURS
+// =============================================================================
+$dvt-blue: #007fba;
+$dvt-white: #ffffff;
+$dvt-yellow: #ffc72c;
+
+$white: #fff;
+$black: #000;
+
+// =============================================================================
+// Neumorphism COLOURS
+// =============================================================================
+$p-morph-light: #dee2e6;
+$p-morph-light-shadow-light: #ffffff;
+$p-morph-light-shadow-dark: #bdc0c4;
+$p-morph-dark: #dee2e6;
+$p-morph-dark-shadow-light: #ffffff;
+$p-morph-dark-shadow-dark: #bdc0c4;
+
+
+$color-pn-4: #181B2C;
+$color-pn-3: #525461;
+$color-pn-2: #8C8D96;
+$color-pn-1: #FFFFFF;
+
+// =============================================================================
+// STATIC COLOURS
+// =============================================================================
+
+
+// =============================================================================
+// Menu COLOURS
+// =============================================================================
+$menu-zero-light: #caf0f8ff;
+$menu-zero-dark: #03045eff;
+$menu-one-light: #ade8f4ff;
+$menu-one-dark: #023e8aff;
+$menu-two-light: #90e0efff;
+$menu-two-dark: #0077b6ff;
+$menu-three-light: #48cae4ff;
+$menu-three-dark: #0096c7ff;
+$menu-four-light: #00b4d8ff;
+$menu-four-dark: #00b4d8ff;
+$menu-five-light: #0096c7ff;
+$menu-five-dark: #48cae4ff;
+$menu-six-light: #0077b6ff;
+$menu-six-dark: #90e0efff;
+$menu-seven-light: #023e8aff;
+$menu-seven-dark: #ade8f4ff;
+$menu-eight-light: #03045eff;
+$menu-eight-dark: #caf0f8ff;
+$menu-nine-light: $white;
+$menu-nine-dark: $black;
+
+// =============================================================================
+// BACKGROUND COLOURS
+// =============================================================================
+
+
+
+// =============================================================================
+// USAGE COLOURS
+// =============================================================================
+
+// Colours are in order (dvt-light, dvt-dark, new)
+$colors: (
+    // DVT =====================================================================
+    --dvt-blue: ($dvt-blue, $dvt-blue),
+    --dvt-yellow: ($dvt-yellow, $dvt-yellow),
+    --dvt-white: ($dvt-white, $dvt-white),
+    
+    // Application =============================================================
+    --application-background: ($dvt-blue, $dvt-white),
+
+    // Header ==================================================================
+    --header-background: ($dvt-white, $dvt-blue),
+
+    // Neumorphism ==================================================================
+    --p-morph: ($p-morph-light, $p-morph-dark),
+    --p-morph-shadow-light: ($p-morph-light-shadow-light, $p-morph-dark-shadow-light),
+    --p-morph-shadow-dark: ($p-morph-light-shadow-dark, $p-morph-dark-shadow-dark),
+
+
+    // Unused below
+
+    // Menu Blocks =============================================================
+    --menu-puzzle-border: ($dvt-white, $dvt-blue),
+    --menu-puzzle-block-background: ($dvt-blue, $dvt-white),
+    --menu-puzzle-block-background-hover: ($dvt-white, $dvt-blue),
+    --menu-puzzle-block-text: ($dvt-white, $dvt-blue),
+    --menu-puzzle-block-text-hover: ($dvt-blue, $dvt-white),
+    --menu-puzzle-block-text-background: ($dvt-blue, $dvt-white),
+    --menu-puzzle-block-text-border: ($dvt-white, $dvt-blue),
+
+    --menu-zero: ($menu-zero-light, $menu-zero-dark),
+    --menu-one: ($menu-one-light, $menu-one-dark),
+    --menu-two: ($menu-two-light, $menu-two-dark),
+    --menu-three: ($menu-three-light, $menu-three-dark),
+    --menu-four: ($menu-four-light, $menu-four-dark),
+    --menu-five: ($menu-five-light, $menu-five-dark),
+    --menu-six: ($menu-six-light, $menu-six-dark),
+    --menu-seven: ($menu-seven-light, $menu-seven-dark),
+    --menu-eight: ($menu-eight-light, $menu-eight-dark),
+    --menu-nine: ($menu-nine-light, $menu-nine-dark),
+)

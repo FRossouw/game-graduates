@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainMenuComponent } from './Features/Main Menu/main-menu/main-menu.component';
 import { PageNotFoundComponent } from './Features/Not Found/page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -8,7 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./Features/Contact Us/contact-us.module').then(i => i.ContactUsModule),
   },
   {
-    path: 'game',
+    path: 'play-game',
     loadChildren: () => import('./Features/Main Game/main-game.module').then(i => i.MainGameModule),
   },
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'main-menu',
+    component: MainMenuComponent,
     loadChildren: () => import('./Features/Main Menu/main-menu.module').then(i => i.MainMenuModule),
   },
   {
@@ -25,6 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'page-not-found',
+    component: PageNotFoundComponent,
     loadChildren: () => import('./Features/Not Found/not-found.module').then(i => i.NotFoundModule),
   },
   {

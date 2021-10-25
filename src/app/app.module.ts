@@ -7,14 +7,16 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 
 import * as MainStore from './Store/index';
+import { SharedModule } from './Shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature(MainStore.reducers.GameReducer.gameFeatureKey, MainStore.reducers.GameReducer.reducer),
     EffectsModule.forRoot([MainStore.effects.GameEffects.GameEffects]),

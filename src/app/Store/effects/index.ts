@@ -1,4 +1,4 @@
-import * as GameEffects from './gameEffects';
+import * as GameEffects from './game.Effects';
 
 export {
     GameEffects

@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonNavigateComponent } from './button-navigate/button-navigate.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { MenuWordPuzzleComponent } from './Components/menu-word-puzzle/menu-word-puzzle.component';
+import { DropdownMenuComponent } from './Components/dropdown-menu/dropdown-menu.component';
+import { ControllerComponent } from './Components/controller/controller.component';
 
 @NgModule({
   declarations: [
-    ButtonNavigateComponent
+    MenuWordPuzzleComponent,
+    HeaderComponent,
+    DropdownMenuComponent,
+    ControllerComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-    ButtonNavigateComponent
+    MenuWordPuzzleComponent,
+    DropdownMenuComponent,
+    HeaderComponent,
+    ControllerComponent
   ]
 })
 export class SharedModule { }

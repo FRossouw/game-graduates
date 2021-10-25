@@ -1,0 +1,17 @@
+<div id="header" class="poppins">
+    <div class="header-logo">
+        <img *ngIf="preference.theme === 'DVT-DARK'" src="../../../../assets/main-menu/logo-white.png">
+        <img *ngIf="preference.theme === 'DVT-LIGHT'" src="../../../../assets/main-menu/logo-blue.png">
+    </div>
+
+    <div class="header-space"></div>
+
+    <div class="header-toggle">
+        <dvt-dropdown-menu [list]="languages" (selectedItem)="changeSelectedLanguge($event)"></dvt-dropdown-menu>
+    </div>
+
+    <div class="header-toggle">
+        <dvt-dropdown-menu [list]="themes" (selectedItem)="changeSelectedTheme($event)"></dvt-dropdown-menu>
+    </div>
+</div>
+

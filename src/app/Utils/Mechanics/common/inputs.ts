@@ -3,7 +3,6 @@ import * as CONST from '../constants/constants';
 
 export function setUpInputs(character: Character): void {
     document.addEventListener('keydown', (evt) => { keyPressed(evt, character); });
-
     document.addEventListener('keyup', (evt) => { keyReleased(evt, character); });
 }
 

@@ -1,13 +1,10 @@
-<div>
+<div class="main-menu-screen">
 
-    <div class="menu">
-        <button [routerLink]="['/game']">Play Game</button>
-        <button [routerLink]="['/tutorial']">Tutorial</button>
-        <button [routerLink]="['/leaderboards']">Leaderboards</button>
-        <button [routerLink]="['/options']">Options</button>
-        <button [routerLink]="['/contact-us']">Contact Us</button>
-    </div>
+    <div class="mms-heading turret">DVT Office Drama</div>
 
-    <img src="../../../../assets/docs/game-graduates.png" alt="">
+    <div
+        *ngFor="let item of menuItems" class="turret"
+        [ngClass]="!item.selected ? 'mms-menu-item' : 'mms-menu-item-selected'">{{item.name}}</div>
+
 
 </div>

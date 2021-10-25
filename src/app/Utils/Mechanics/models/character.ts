@@ -53,7 +53,7 @@ export class Character {
     // =================================================
 
     /**
-     * Move the character accorgin to keyboard inputs and movement booleans
+     * Move the character according to keyboard inputs and movement booleans
      * Character movement is also determined by tile collisions and will prevent movement in certain cases.
      * Some tile collisions will allow a character to pick up items
      * @param levelGrid The grid that builds the level.
