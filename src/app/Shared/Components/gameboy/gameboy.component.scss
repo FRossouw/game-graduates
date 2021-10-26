@@ -232,3 +232,19 @@
         }
     }
 }
+
+@media only screen and (max-height: 650px) and (min-width: 1250px) {
+    #gameboyContainer {
+        #gameboy {
+            zoom: 50%;
+        }
+    }
+}
+
+@media only screen and (max-height: 550px) {
+    #gameboyContainer {
+        #gameboy {
+            zoom: 50%;
+        }
+    }
+}
