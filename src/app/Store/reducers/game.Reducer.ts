@@ -35,7 +35,12 @@ const initialState: GameState = {
     language: 0
   },
   menuSelection: {
-    options: false
+    contactUs: false,
+    leaderboards: false,
+    mainGame: false,
+    mainMenu: true,
+    options: false,
+    tutorial: false
   }
 };
 
@@ -47,8 +52,14 @@ const locationReducer = createReducer(
       preferences: action.preference
     };
   }),
+  on(Actions.setMenuSelection, (state, action) => {
+    console.log(action.menu);
+    return {
+      ...state,
+      menuSelection: action.menu
+    };
+  }),
   on(Actions.setControllerButton, (state, action) => {
-    console.log(action.controller);
     return {
       ...state,
       controller: { ...action.controller }

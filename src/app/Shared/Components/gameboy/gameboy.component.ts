@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { setControllerButton } from 'src/app/Store/actions/gameActions';
 import { Controller } from 'src/app/Store/models';
@@ -28,12 +29,16 @@ export class GameboyComponent {
   };
   usageController = { ...this.defaultController };
 
-  event = document.createEvent('KeyboardEvent');
+  navigateTo: string = '';
 
-  constructor(private gameStore: Store<GameState>) { }
+  constructor(
+    private router: Router,
+    private gameStore: Store<GameState>
+    ) { }
 
   buttonStateChange(button: string): void {
     this.usageController = { ...this.defaultController };
+    this.navigateTo = '';
     switch (button) {
       // Up Buttons
       case 'r-up':
@@ -66,21 +71,24 @@ export class GameboyComponent {
       // Other Buttons
       case 'options':
         this.usageController.buttonOptions = true;
+        this.navigateTo = 'options';
         break;
       case 'start':
         this.usageController.buttonStart = true;
         break;
       case 'theme':
         this.usageController.buttonTheme = true;
+        this.navigateTo = 'options/theme';
         break;
     }
+    if (this.navigateTo !== '') {
+      this.navigate();
+    }
     this.gameStore.dispatch(setControllerButton({ controller: this.usageController }));
-    this.resetButtonStates();
   }
 
-  private resetButtonStates(): void {
-    this.usageController = { ...this.defaultController };
-    this.gameStore.dispatch(setControllerButton({ controller: this.usageController }));
+  private navigate(): void {
+    this.router.navigate([`/${this.navigateTo}`]);
   }
 
 }
