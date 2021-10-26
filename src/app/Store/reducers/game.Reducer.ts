@@ -16,22 +16,22 @@ const initialState: GameState = {
     loading: false
   },
   controller: {
-    buttonUp: false,
-    buttonLeft: false,
-    buttonRight: false,
-    buttonDown: false,
-    buttonTriangle: false,
-    buttonSquare: false,
-    buttonCircle: false,
-    buttonX: false,
+    buttonLLeft: false,
+    buttonLRight: false,
+    buttonLDown: false,
+    buttonLUp: false,
+    buttonRLeft: false,
+    buttonRRight: false,
+    buttonRDown: false,
+    buttonRUp: false,
     buttonAnalogLeft: false,
     buttonAnalogRight: false,
     buttonOptions: false,
     buttonStart: false,
-    buttonSelect: false
+    buttonTheme: false
   },
   preferences: {
-    theme: 'DVT-DARK',
+    theme: 'DVT-LIGHT',
     language: 0
   },
   menuSelection: {
@@ -48,24 +48,10 @@ const locationReducer = createReducer(
     };
   }),
   on(Actions.setControllerButton, (state, action) => {
-    const controllerChanged: Models.Controller = {
-      buttonUp: action.buttonUp ? action.buttonUp : false,
-      buttonLeft: action.buttonLeft ? action.buttonLeft : false,
-      buttonRight: action.buttonRight ? action.buttonRight : false,
-      buttonDown: action.buttonDown ? action.buttonDown : false,
-      buttonTriangle: action.buttonTriangle ? action.buttonTriangle : false,
-      buttonSquare: action.buttonSquare ? action.buttonSquare : false,
-      buttonCircle: action.buttonCircle ? action.buttonCircle : false,
-      buttonX: action.buttonX ? action.buttonX : false,
-      buttonAnalogLeft: action.buttonAnalogLeft ? action.buttonAnalogLeft : false,
-      buttonAnalogRight: action.buttonAnalogRight ? action.buttonAnalogRight : false,
-      buttonOptions: action.buttonOptions ? action.buttonOptions : false,
-      buttonStart: action.buttonStart ? action.buttonStart : false,
-      buttonSelect: action.buttonSelect ? action.buttonSelect : false
-    };
+    console.log(action.controller);
     return {
       ...state,
-      controller: controllerChanged
+      controller: { ...action.controller }
     };
   }),
 );

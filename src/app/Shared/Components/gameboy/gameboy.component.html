@@ -37,7 +37,7 @@
             </div>
             <!-- Other Buttons -->
             <div class="gameboy-button-other-left flex-center-right">
-                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">THEME</div>
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('theme')">THEME</div>
             </div>
             <!-- Anolog - Not In Use -->
             <div class="gameboy-button-analogs flex-center-vh">
@@ -60,8 +60,8 @@
             </div>
             <!-- Other Buttons -->
             <div class="gameboy-button-other-right flex-center-left">
-                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">START</div>
-                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">OPTIONS</div>
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('start')">START</div>
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('options')">OPTIONS</div>
             </div>
             <!-- Shape Buttons -->
             <div class="gameboy-button-shapes flex-center-vh">

@@ -104,7 +104,7 @@ export class MainGameCanvasComponent implements OnInit {
 
   moveWithController(): void {
     this.gameStore.select(getControllerButton).subscribe(c => {
-      this.character.movingUp = c.buttonUp;
+      // this.character.movingUp = c.buttonUp;
       console.log(this.character);
     });
     this.character.movingUp = false;

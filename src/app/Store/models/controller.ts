@@ -1,16 +1,16 @@
 
 export interface Controller {
-    buttonUp: boolean;
-    buttonLeft: boolean;
-    buttonRight: boolean;
-    buttonDown: boolean;
-    buttonTriangle: boolean;
-    buttonSquare: boolean;
-    buttonCircle: boolean;
-    buttonX: boolean;
+    buttonLLeft: boolean;
+    buttonLRight: boolean;
+    buttonLDown: boolean;
+    buttonLUp: boolean;
+    buttonRLeft: boolean;
+    buttonRRight: boolean;
+    buttonRDown: boolean;
+    buttonRUp: boolean;
     buttonAnalogLeft: boolean;
     buttonAnalogRight: boolean;
     buttonOptions: boolean;
     buttonStart: boolean;
-    buttonSelect: boolean;
+    buttonTheme: boolean
 }

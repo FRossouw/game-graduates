@@ -15,18 +15,4 @@ export const setMenuSelection =
 
 export const setControllerButton =
     createAction('[Preference] Set Controller Button',
-        props<{
-            buttonUp?: boolean,
-            buttonLeft?: boolean,
-            buttonRight?: boolean,
-            buttonDown?: boolean,
-            buttonTriangle?: boolean,
-            buttonSquare?: boolean,
-            buttonCircle?: boolean,
-            buttonX?: boolean,
-            buttonAnalogLeft?: boolean,
-            buttonAnalogRight?: boolean,
-            buttonOptions?: boolean,
-            buttonStart?: boolean,
-            buttonSelect?: boolean
-        }>());
+        props<{ controller: StoreModels.Controller }>());

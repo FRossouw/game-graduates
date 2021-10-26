@@ -33,17 +33,17 @@ export class MainMenuComponent implements OnInit {
     document.addEventListener('keydown', (evt) => { this.keyPressed(evt); });
 
     this.gameStore.select(getControllerButton).subscribe(c => {
-      if (c.buttonUp) { this.moveUp(); }
-      if (c.buttonDown) { this.moveDown(); }
-      this.determineSelected();
-      if (c.buttonStart ) {
-        this.navigate(this.menuItems[this.index].link);
-        this.gameStore.dispatch(setControllerButton({ buttonStart: false }));
-      }
-      if (c.buttonOptions ) {
-        this.navigate('options');
-        this.gameStore.dispatch(setControllerButton({ buttonOptions: false }));
-      }
+      // if (c.buttonUp) { this.moveUp(); }
+      // if (c.buttonDown) { this.moveDown(); }
+      // this.determineSelected();
+      // if (c.buttonStart ) {
+      //   this.navigate(this.menuItems[this.index].link);
+      //   this.gameStore.dispatch(setControllerButton({ buttonStart: false }));
+      // }
+      // if (c.buttonOptions ) {
+      //   this.navigate('options');
+      //   this.gameStore.dispatch(setControllerButton({ buttonOptions: false }));
+      // }
     });
   }
 
