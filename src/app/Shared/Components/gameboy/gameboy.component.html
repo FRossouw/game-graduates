@@ -1,0 +1,146 @@
+
+<div id="gameboyContainer" class="flex-center-vh">
+    <div id="gameboy" class="flex-center-vh p-morph-default">
+
+        <!-- Gameboy left side -->
+        <div class="gameboy-left">
+            <!-- Arrow Buttons -->
+            <div class="gameboy-button-arrows flex-center-vh">
+                <div class="button-circles-container flex-center-vh">
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('r-up')">
+                            <p class="flex-center-vh poppins up">ᐉ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('r-left')">
+                            <p class="flex-center-vh poppins left">ᐉ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('r-right')">
+                            <p class="flex-center-vh poppins right">ᐉ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('r-down')">
+                            <p class="flex-center-vh poppins down">ᐉ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="gameboy-layout-circle"></div>
+            </div>
+            <!-- Other Buttons -->
+            <div class="gameboy-button-other-left flex-center-right">
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">THEME</div>
+            </div>
+            <!-- Anolog - Not In Use -->
+            <div class="gameboy-button-analogs flex-center-vh">
+                <div class="button-analog p-morph-default-s button-disabled"></div>
+            </div>
+        </div>
+    
+        <!-- Gameboy screen -->
+        <div class="gameboy-screen">
+            <div class="gameboy-screen-content p-morph-inset-s">
+                <ng-content select=".screen-container"></ng-content>
+            </div>
+        </div>
+    
+        <!-- Gameboy right side -->
+        <div class="gameboy-right">
+            <!-- Anolog - Not In Use -->
+            <div class="gameboy-button-analogs flex-center-vh">
+                <div class="button-analog p-morph-default-s button-disabled"></div>
+            </div>
+            <!-- Other Buttons -->
+            <div class="gameboy-button-other-right flex-center-left">
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">START</div>
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">OPTIONS</div>
+            </div>
+            <!-- Shape Buttons -->
+            <div class="gameboy-button-shapes flex-center-vh">
+                <div class="button-circles-container flex-center-vh">
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('l-up')">
+                            <p class="flex-center-vh poppins up">ᗠ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('l-left')">
+                            <p class="flex-center-vh poppins left">ᗠ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('l-right')">
+                            <p class="flex-center-vh poppins right">ᗠ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('l-down')">
+                            <p class="flex-center-vh poppins down">ᗠ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="gameboy-layout-circle"></div>
+            </div>
+        </div>
+    
+        <!-- Gameboy bottom side -->
+        <div class="gameboy-bottom">
+            <!-- Other Buttons -->
+            <div class="gameboy-button-other-middle flex-center-vh">
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">THEME</div>
+                <div class="grower"></div>
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">START</div>
+                <div class="poppins button-other p-morph-default-s button-active flex-center-vh">OPTIONS</div>
+            </div>
+            <!-- Anolog - Not In Use -->
+            <div class="gameboy-button-analogs flex-center-vh">
+                <div class="button-analog p-morph-default-s button-disabled"></div>
+            </div>
+            <!-- Shape Buttons -->
+            <div class="gameboy-button-shapes flex-center-vh">
+                <div class="button-circles-container flex-center-vh">
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('l-up')">
+                            <p class="flex-center-vh poppins up">ᗠ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('l-left')">
+                            <p class="flex-center-vh poppins left">ᗠ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('l-right')">
+                            <p class="flex-center-vh poppins right">ᗠ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="flex-center-vh">
+                        <div class="button-circle p-morph-default-s button-active flex-center-vh" (click)="buttonStateChange('l-down')">
+                            <p class="flex-center-vh poppins down">ᗠ</p>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="gameboy-layout-circle"></div>
+            </div>
+        </div>
+    
+    </div>    
+</div>
