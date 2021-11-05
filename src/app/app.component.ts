@@ -1,7 +1,5 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { GameState } from './Store/reducers/game.Reducer';
 import { ThemeToggleService } from './Utils/Theme/theme-toggle.service';
 
 @Component({

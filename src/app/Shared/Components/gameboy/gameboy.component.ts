@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { setControllerButton } from 'src/app/Store/actions/gameActions';
-import { Controller } from 'src/app/Store/models';
-import { GameState } from 'src/app/Store/reducers/game.Reducer';
+import { setController } from 'src/app/State/controller/controller.actions';
+import { ControllerState } from 'src/app/State/controller/controller.reducer';
+import { iController, iDefaultController } from 'src/app/Utils/Models';
 
 @Component({
   selector: 'dvt-gameboy',
@@ -12,79 +12,64 @@ import { GameState } from 'src/app/Store/reducers/game.Reducer';
 })
 export class GameboyComponent {
 
-  defaultController: Controller = {
-    buttonLLeft: false,
-    buttonLRight: false,
-    buttonLDown: false,
-    buttonLUp: false,
-    buttonRLeft: false,
-    buttonRRight: false,
-    buttonRDown: false,
-    buttonRUp: false,
-    buttonAnalogLeft: false,
-    buttonAnalogRight: false,
-    buttonOptions: false,
-    buttonStart: false,
-    buttonTheme: false
-  };
-  usageController = { ...this.defaultController };
+  usageController: iController = { ...iDefaultController };
 
   navigateTo: string = '';
 
   constructor(
+    private controllerStore: Store<ControllerState>,
     private router: Router,
-    private gameStore: Store<GameState>
-    ) { }
+  ) { }
 
   buttonStateChange(button: string): void {
-    this.usageController = { ...this.defaultController };
+    this.usageController = { ...iDefaultController };
     this.navigateTo = '';
     switch (button) {
       // Up Buttons
       case 'r-up':
-        this.usageController.buttonRUp = true;
+        this.usageController.rightButtonsUp = true;
         break;
       case 'l-up':
-        this.usageController.buttonLUp = true;
+        this.usageController.leftButtonsUp = true;
         break;
       // Left Buttons
       case 'r-left':
-        this.usageController.buttonRLeft = true;
+        this.usageController.rightButtonsLeft = true;
         break;
       case 'l-left':
-        this.usageController.buttonLLeft = true;
+        this.usageController.leftButtonsLeft = true;
         break;
       // Right Buttons
       case 'r-right':
-        this.usageController.buttonRRight = true;
+        this.usageController.rightButtonsRight = true;
         break;
       case 'l-right':
-        this.usageController.buttonLRight = true;
+        this.usageController.leftButtonsRight = true;
         break;
       // Down Buttons
       case 'r-down':
-        this.usageController.buttonRDown = true;
+        this.usageController.rightButtonsDown = true;
         break;
       case 'l-down':
-        this.usageController.buttonLDown = true;
+        this.usageController.leftButtonsDown = true;
         break;
       // Other Buttons
       case 'options':
-        this.usageController.buttonOptions = true;
+        this.usageController.options = true;
         this.navigateTo = 'options';
         break;
       case 'start':
-        this.usageController.buttonStart = true;
+        this.usageController.start = true;
         break;
       case 'theme':
-        this.usageController.buttonTheme = true;
+        this.usageController.theme = true;
         this.navigateTo = 'options/theme';
         break;
     }
     if (this.navigateTo !== '') {
       this.navigate();
     }
-    this.gameStore.dispatch(setControllerButton({ controller: this.usageController }));
+    this.controllerStore.dispatch(setController({ controller: this.usageController }));
   }
 
   private navigate(): void {

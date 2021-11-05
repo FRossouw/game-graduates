@@ -1,0 +1,10 @@
+<div class="menu-screen">
+
+    <div class="ms-heading turret">{{menuHeader}}</div>
+
+    <div
+        *ngFor="let item of menuItems" class="turret"
+        [ngClass]="!item.selected ? 'ms-menu-item' : 'ms-menu-item-selected'">{{item.name}}
+    </div>
+
+</div>

@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setControllerButton } from 'src/app/Store/actions/gameActions';
-import { GameState } from 'src/app/Store/reducers/game.Reducer';
-import { getControllerButton } from 'src/app/Store/selectors/game.Selectors';
+// import { setControllerButton } from 'src/app/Store/actions/gameActions';
+// import { GameState } from 'src/app/Store/reducers/game.Reducer';
+// import { getControllerButton } from 'src/app/Store/selectors/game.Selectors';
 import * as Mechanics from '../../../Utils/Mechanics/index';
 
 @Component({
@@ -60,7 +60,7 @@ export class MainGameCanvasComponent implements OnInit {
       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
     ];
 
-  constructor(private gameStore: Store<GameState>) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.globalLoading();
@@ -103,10 +103,10 @@ export class MainGameCanvasComponent implements OnInit {
   }
 
   moveWithController(): void {
-    this.gameStore.select(getControllerButton).subscribe(c => {
-      // this.character.movingUp = c.buttonUp;
-      console.log(this.character);
-    });
+    // this.gameStore.select(getControllerButton).subscribe(c => {
+    //   // this.character.movingUp = c.buttonUp;
+    //   console.log(this.character);
+    // });
     this.character.movingUp = false;
   }
 
