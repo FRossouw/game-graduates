@@ -1,4 +1,4 @@
-import { iMenuItem } from "../Models";
+import { iMenuItem } from '../Models';
 
 export const MenuMainMenu: iMenuItem[] = [
     { index: 0, name: 'Play Game', link: 'play-game', selected: true },

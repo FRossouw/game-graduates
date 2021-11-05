@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { controllerFeatureKey, ControllerState } from "./controller.reducer";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { controllerFeatureKey, ControllerState } from './controller.reducer';
 
 const controllerFeatureState = createFeatureSelector<ControllerState>(controllerFeatureKey);
 

@@ -9,13 +9,13 @@ import { StoreModule } from '@ngrx/store';
 import { SharedModule } from './Shared/shared.module';
 
 import * as PreferenceStore from './State/preferences/preferences.reducer';
-import * as PreferenceEffects from './State/preferences/preferences.effects'
+import * as PreferenceEffects from './State/preferences/preferences.effects';
 
 import * as MenuStore from './State/menu/menu.reducer';
-import * as MenuEffects from './State/menu/menu.effects'
+import * as MenuEffects from './State/menu/menu.effects';
 
 import * as ControllerStore from './State/controller/controller.reducer';
-import * as ControllerEffects from './State/controller/controller.effects'
+import * as ControllerEffects from './State/controller/controller.effects';
 
 @NgModule({
   declarations: [

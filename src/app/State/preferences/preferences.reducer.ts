@@ -1,4 +1,4 @@
-import { createReducer, Action, on } from "@ngrx/store";
+import { createReducer, Action, on } from '@ngrx/store';
 import { iPreference } from '../../Utils/Models';
 import * as PreferenceActions from '../preferences/preferences.actions';
 
@@ -15,7 +15,7 @@ const initialState: PreferenceState = {
     themeKey: 0,
     language: 0
   }
-}
+};
 
 
 const locationReducer = createReducer(

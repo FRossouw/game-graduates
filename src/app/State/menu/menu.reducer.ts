@@ -1,4 +1,4 @@
-import { createReducer, Action, on } from "@ngrx/store";
+import { createReducer, Action, on } from '@ngrx/store';
 import * as MenuActions from '../menu/menu.actions';
 import { iMenu } from '../../Utils/Models';
 
@@ -19,7 +19,7 @@ const initialState: MenuState = {
         options: false,
         tutorial: false
     }
-}
+};
 
 
 const locationReducer = createReducer(

@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { menuFeatureKey, MenuState } from "./menu.reducer";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { menuFeatureKey, MenuState } from './menu.reducer';
 
 const menuFeatureState = createFeatureSelector<MenuState>(menuFeatureKey);
 

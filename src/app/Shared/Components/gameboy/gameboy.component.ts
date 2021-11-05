@@ -14,7 +14,7 @@ export class GameboyComponent {
 
   usageController: iController = { ...iDefaultController };
 
-  navigateTo: string = '';
+  navigateTo = '';
 
   constructor(
     private controllerStore: Store<ControllerState>,

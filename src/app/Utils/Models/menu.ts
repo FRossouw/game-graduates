@@ -1,5 +1,5 @@
 
-export interface iMenu {
+export interface IMenu {
     contactUs: boolean;
     leaderboards: boolean;
     mainGame: boolean;
@@ -8,16 +8,16 @@ export interface iMenu {
     tutorial: boolean;
 }
 
-export const iDefaultMenu: iMenu = {
+export const iDefaultMenu: IMenu = {
     contactUs: false,
     leaderboards: false,
     mainGame: false,
     mainMenu: false,
     options: false,
     tutorial: false
-}
+};
 
-export interface iMenuItem {
+export interface IMenuItem {
     index: number;
     name: string;
     link: string;

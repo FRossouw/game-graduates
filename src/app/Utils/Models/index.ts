@@ -1,14 +1,14 @@
-import { iKeyValue } from './KeyValue';
-import { iPreference } from './preferences';
-import { iController, iDefaultController } from './controller';
-import { iMenu, iDefaultMenu, iMenuItem } from './menu';
+import { IKeyValue } from './KeyValue';
+import { IPreference } from './preferences';
+import { IController, iDefaultController } from './controller';
+import { IMenu, iDefaultMenu, IMenuItem } from './menu';
 
 export {
-    iKeyValue,
-    iPreference,
-    iController,
+    IKeyValue as iKeyValue,
+    IPreference as iPreference,
+    IController as iController,
     iDefaultController,
-    iMenu,
+    IMenu as iMenu,
     iDefaultMenu,
-    iMenuItem
+    IMenuItem as iMenuItem
 };

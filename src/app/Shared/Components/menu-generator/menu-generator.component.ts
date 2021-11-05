@@ -21,7 +21,7 @@ export class MenuGeneratorComponent implements OnInit {
   @Input() menuHeader: string;
   @Input() set menuItemsInput(items: iMenuItem[]) {
     this.menuItems = items;
-  };
+  }
 
   defaultMenuItems: iMenu;
 
@@ -52,7 +52,7 @@ export class MenuGeneratorComponent implements OnInit {
   ngOnInit(): void {
     this.resetCounters();
     document.addEventListener('keydown', (evt) => { this.keyPressed(evt); });
-    this.menuStore.select(selectMenuSelection).subscribe(m => { this.currentMenu = { ...m } });
+    this.menuStore.select(selectMenuSelection).subscribe(m => { this.currentMenu = { ...m }; });
     this.controllerStore.select(selectController).subscribe(c => {
       if (
         this.currentMenu.mainMenu ||
@@ -110,7 +110,7 @@ export class MenuGeneratorComponent implements OnInit {
    * @param up Should the menu selector move up = true else false.
    * @param down Should the menu selector move down = true else false.
    */
-  private moveMenu(up: boolean, down: boolean) {
+  private moveMenu(up: boolean, down: boolean): void {
     if (up && !down) {
       this.index = this.index === 0 ? this.menuItemCount : this.index - 1;
     }

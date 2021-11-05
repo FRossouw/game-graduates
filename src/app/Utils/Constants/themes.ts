@@ -1,4 +1,4 @@
-import { iKeyValue } from "../Models";
+import { iKeyValue } from '../Models';
 
 export const ThemesAvailable: iKeyValue[] = [
     { key: 0, value: 'DVT-LIGHT' } as iKeyValue,

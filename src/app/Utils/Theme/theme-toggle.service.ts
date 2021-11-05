@@ -86,7 +86,7 @@ export class ThemeToggleService {
    */
   private setTheme(themeClass: string, themeMode: number): void {
     this.preferences.themeKey = this.extractThemeFromValue(themeClass).key;
-    this.preferenceStore.dispatch(setPreference({ preference: this.preferences }))
+    this.preferenceStore.dispatch(setPreference({ preference: this.preferences }));
     document.body.classList.add(themeClass);
     this.theme$.next(themeMode);
   }

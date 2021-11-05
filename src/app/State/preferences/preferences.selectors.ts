@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { preferencesFeatureKey, PreferenceState } from "./preferences.reducer";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { preferencesFeatureKey, PreferenceState } from './preferences.reducer';
 
 const preferencesFeatureState = createFeatureSelector<PreferenceState>(preferencesFeatureKey);
 

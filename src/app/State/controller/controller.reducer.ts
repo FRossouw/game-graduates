@@ -1,4 +1,4 @@
-import { createReducer, Action, on } from "@ngrx/store";
+import { createReducer, Action, on } from '@ngrx/store';
 import * as ControllerActions from '../controller/controller.actions';
 import { iController } from '../../Utils/Models';
 
@@ -26,7 +26,7 @@ const initialState: ControllerState = {
     rightButtonsDown: false,
     rightAnalog: false
   }
-}
+};
 
 
 const locationReducer = createReducer(

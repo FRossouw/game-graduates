@@ -1,5 +1,5 @@
 
-export interface iPreference {
+export interface IPreference {
     themeKey: number;
     language: number;
 }
